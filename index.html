@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nadeera & Faeis | Nikkah Invitation (Emerald & Gold)</title>
+<meta name="description" content="You are lovingly invited to the Nikkah of Nadeera Basheer & Muhammed Faeis, 20th September 2026, Highness Auditorium, Edathala.">
+<meta property="og:title" content="Nadeera & Faeis | Nikkah Invitation">
+<meta property="og:description" content="20th September 2026 · Highness Auditorium, Edathala · Nikkah at 11:30 AM">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#1E3D2C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #F6F1E4;
+    --cream-deep: #E9DEC0;
+    --maroon: #1E3D2C;
+    --maroon-deep: #10221A;
+    --gold: #C9962C;
+    --gold-bright: #E0B24C;
+    --gold-soft: #E3C486;
+    --ink: #29281F;
+    --blush: #C9A24A;
+    --pine: #2B4A34;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background-color:var(--cream);
+    color:var(--ink);
+    font-family:'EB Garamond', serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  @media print{
+    .gate, .pattern-bg, .petals, .music-toggle, .song-section, .no-print, .scroll-cue{ display:none !important; }
+    body::before{ display:none !important; }
+    .hero{ min-height:auto; page-break-after: always; }
+    .card{ box-shadow:none !important; transform:none !important; }
+  }
+
+  /* soft vignette so the page reads like it's resting on a table, not floating in a browser */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    z-index:3;
+    pointer-events:none;
+    background: radial-gradient(ellipse 120% 90% at 50% 45%, transparent 55%, rgba(16,34,26,0.10) 100%);
+  }
+
+  .pattern-bg{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><g fill='none' stroke='%23C9962C' stroke-width='0.6' stroke-opacity='0.4'><path d='M32 2 L41 15 L57 15 L48 28 L57 41 L41 41 L32 54 L23 41 L7 41 L16 28 L7 15 L23 15 Z'/></g></svg>");
+    background-size:64px 64px;
+    opacity:0.55;
+  }
+
+  .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 18px;
+    border:1px solid var(--gold);
+    border-radius:999px;
+    font-size:0.72rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+
+  /* ---- reusable entrance / reveal utilities ---- */
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(20px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .reveal{
+    opacity:0;
+    transform:translateY(26px);
+    transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  .sr-only{
+    position:absolute; width:1px; height:1px;
+    padding:0; margin:-1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap; border:0;
+  }
+
+  /* ================= Opening gate ================= */
+  .gate{
+    position:fixed; inset:0; z-index:50;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(184,134,46,0.16), transparent 60%),
+      linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+    transition: opacity 0.9s ease, visibility 0.9s ease;
+  }
+  .gate.closed{ opacity:0; visibility:hidden; pointer-events:none; }
+  .gate-inner{ padding:0 24px; }
+  .gate-monogram{
+    width:76px; height:76px; margin:0 auto 20px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:1.6rem;
+    color:var(--maroon);
+    animation: haloPulse 3s ease-in-out infinite;
+  }
+  .gate-eyebrow{
+    font-size:0.75rem; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold); margin-bottom:10px;
+  }
+  .gate-names{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    color:var(--maroon);
+    font-size:clamp(1.5rem, 5vw, 2rem);
+    margin:0 0 30px;
+  }
+  .gate-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 30px;
+    border:1px solid var(--gold);
+    background:transparent;
+    color:var(--maroon);
+    font-family:'EB Garamond', serif;
+    font-size:0.95rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    cursor:pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .gate-btn:hover{ background:var(--maroon); color:var(--cream); }
+  .gate-btn svg{ width:16px; height:16px; }
+
+  /* ================= Wedding song ================= */
+  .song-section{
+    position:relative; z-index:1;
+    max-width:640px;
+    margin:0 auto;
+    padding: 20px 20px 70px;
+  }
+  .song-frame{
+    position:relative;
+    text-align:center;
+    padding:32px 28px;
+    border:1px solid var(--gold-soft);
+    background: rgba(255,252,246,0.55);
+    box-shadow: 0 24px 50px -20px rgba(16,34,26,0.25);
+  }
+  .song-title{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--maroon);
+    margin:0 0 16px;
+  }
+  .song-frame audio{
+    accent-color: var(--maroon);
+  }
+  .song-credit{
+    font-size:0.75rem;
+    letter-spacing:0.5px;
+    color:var(--ink);
+    opacity:0.55;
+    margin:14px 0 0;
+  }
+
+  /* ================= Download ================= */
+  .download-wrap{
+    text-align:center;
+    padding: 0 20px 80px;
+    position:relative; z-index:1;
+  }
+
+  /* ================= Wedding song jump button ================= */
+  .music-toggle{
+    position:fixed; bottom:22px; right:22px; z-index:40;
+    width:52px; height:52px; border-radius:50%;
+    background: var(--maroon); color:var(--cream);
+    border:1px solid var(--gold-soft);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+    text-decoration:none;
+    box-shadow: 0 12px 26px -10px rgba(16,34,26,0.5);
+    animation: haloPulse 3s ease-in-out infinite;
+  }
+  .music-toggle svg{ width:19px; height:19px; }
+  .music-toggle .icon-off{ display:none; }
+  .music-toggle.muted .icon-on{ display:none; }
+  .music-toggle.muted .icon-off{ display:block; }
+
+  /* gold shine sweep used on couple names */
+  .shine{ position:relative; display:inline-block; }
+  .shine::before{
+    content:attr(data-text);
+    position:absolute; left:0; top:0; width:100%; height:100%;
+    background-image:linear-gradient(115deg, transparent 25%, rgba(233,201,120,0.95) 48%, transparent 68%);
+    background-size:260% 100%;
+    background-repeat:no-repeat;
+    background-position: -60% 0;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation: shineSweep 7s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes shineSweep{
+    0%, 40%{ background-position:-60% 0; }
+    60%, 100%{ background-position:160% 0; }
+  }
+
+  /* ================= Petal drift (global) ================= */
+  .petals{ position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .petal{ position:absolute; top:-5%; opacity:0.5; animation:drift linear infinite; }
+  @keyframes drift{
+    0%{ transform:translateY(0) translateX(0) rotate(0deg); }
+    100%{ transform:translateY(112vh) translateX(30px) rotate(220deg); }
+  }
+
+  /* ================= HERO / LANDING ================= */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 40px 22px;
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.10'/></svg>"),
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,134,46,0.14), transparent 60%),
+      radial-gradient(ellipse 90% 70% at 50% 100%, rgba(30,61,44,0.16), transparent 60%),
+      linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+    background-blend-mode: multiply, normal, normal, normal;
+    overflow:hidden;
+  }
+
+  .hero-arch{
+    position:absolute;
+    top:0; left:50%;
+    transform:translateX(-50%);
+    width:min(560px, 92vw);
+    height:100%;
+    z-index:0;
+    opacity:0.9;
+  }
+
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:640px;
+  }
+  .hero-inner > *{
+    opacity:0;
+    animation: riseIn 1s cubic-bezier(.2,.7,.2,1) forwards;
+    animation-play-state: paused;
+  }
+  body.opened .hero-inner > *{ animation-play-state: running; }
+  .hero-inner > *:nth-child(1){ animation-delay:0.15s; }
+  .hero-inner > *:nth-child(2){ animation-delay:0.35s; }
+  .hero-inner > *:nth-child(3){ animation-delay:0.55s; }
+  .hero-inner > *:nth-child(4){ animation-delay:0.85s; }
+  .hero-inner > *:nth-child(5){ animation-delay:1.1s; }
+  .hero-inner > *:nth-child(6){ animation-delay:1.4s; }
+
+  .eyebrow{
+    margin-bottom:22px;
+  }
+
+  .hero-bismillah{
+    font-family:'Amiri', serif;
+    font-size:1.5rem;
+    color:var(--maroon-deep);
+    margin-bottom:22px;
+    opacity:0.85;
+  }
+
+  .hero-names{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    color:var(--maroon);
+    line-height:1.1;
+  }
+  .hero-names .first{ font-size:clamp(2.3rem, 8vw, 3.6rem); display:block; position:relative; }
+  .hero-amp{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-weight:500;
+    color:var(--gold);
+    font-size:clamp(1.4rem, 4vw, 1.9rem);
+    display:block;
+    margin:6px 0;
+  }
+  .hero-names .second{ font-size:clamp(2.3rem, 8vw, 3.6rem); display:block; position:relative; }
+
+  .hero-date{
+    margin-top:22px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.15rem;
+    letter-spacing:1px;
+    color:var(--ink);
+    opacity:0.85;
+  }
+  .hero-date .sep{ color:var(--gold); margin:0 8px; }
+
+  /* ---- Countdown (hero, prominent) ---- */
+  .countdown-wrap{
+    margin: 34px auto 6px;
+  }
+  .countdown-label{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    color:var(--ink);
+    opacity:0.7;
+    font-size:0.98rem;
+    margin-bottom:16px;
+    letter-spacing:0.3px;
+  }
+  .countdown{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .countdown .box{
+    min-width:72px;
+    padding:14px 10px 12px;
+    border:1px solid var(--gold-soft);
+    background:rgba(255,255,255,0.55);
+    position:relative;
+  }
+  .countdown .box::before{
+    content:"";
+    position:absolute; inset:4px;
+    border:1px solid rgba(184,134,46,0.25);
+    pointer-events:none;
+  }
+  .countdown .box .num{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size:1.7rem;
+    color:var(--maroon);
+    display:block;
+    line-height:1.1;
+  }
+  .countdown .box .lbl{
+    font-size:0.65rem;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--ink);
+    opacity:0.65;
+  }
+
+  .scroll-cue{
+    margin-top:44px;
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    text-decoration:none;
+    color:var(--maroon);
+    font-family:'EB Garamond', serif;
+    font-size:0.78rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    opacity:0.75;
+  }
+  .scroll-cue svg{
+    width:16px; height:16px;
+    animation: bob 1.8s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(6px); }
+  }
+
+  /* ================= INVITATION SECTION ================= */
+  .invite-section{
+    position:relative;
+    padding: 70px 20px 90px;
+    background: linear-gradient(180deg, var(--cream-deep) 0%, var(--cream) 8%, var(--cream) 100%);
+  }
+
+  .corner{ position:absolute; width:230px; height:230px; opacity:0.9; z-index:0; pointer-events:none; }
+  .corner.tl{ top:20px; left:-30px; transform:scaleX(-1) rotate(6deg);}
+  .corner.br{ bottom:20px; right:-30px; transform:rotate(4deg);}
+  @media (max-width:600px){ .corner{ width:130px; height:130px; } }
+
+  .wrap{ max-width:740px; margin:0 auto; position:relative; z-index:1; }
+
+  .card{
+    position:relative;
+    border:1px solid var(--gold-soft);
+    padding:52px 34px 46px;
+    background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.14'/></svg>"),
+      rgba(255,252,246,0.72);
+    background-blend-mode: multiply, normal;
+    box-shadow:
+      0 30px 60px -20px rgba(16,34,26,0.28),
+      0 10px 24px -12px rgba(16,34,26,0.18);
+    transform: perspective(1400px) rotateX(0.6deg);
+  }
+  .card::before, .card::after{
+    content:""; position:absolute; width:36px; height:36px; border:1px solid var(--gold);
+  }
+  .card::before{ top:-1px; left:-1px; border-right:none; border-bottom:none; }
+  .card::after{ bottom:-1px; right:-1px; border-left:none; border-top:none; }
+
+  .fold-line{
+    position:absolute; left:6%; right:6%; top:50%;
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(16,34,26,0.16) 50%, transparent);
+    pointer-events:none;
+  }
+
+  .lantern-row{ position:relative; display:flex; justify-content:center; align-items:center; margin-bottom:8px; }
+  .lantern-halo{
+    position:absolute;
+    width:100px; height:100px;
+    background: radial-gradient(circle, rgba(224,178,76,0.5), transparent 70%);
+    filter: blur(7px);
+    animation: haloPulse 2.6s ease-in-out infinite;
+    z-index:0;
+  }
+  @keyframes haloPulse{
+    0%,100%{ opacity:0.45; transform:scale(0.9); }
+    50%{ opacity:0.85; transform:scale(1.08); }
+  }
+  .lantern{ position:relative; z-index:1; width:58px; filter: drop-shadow(0 0 8px rgba(184,134,46,0.4)); animation: sway 4.5s ease-in-out infinite; transform-origin: top center; }
+  @keyframes sway{ 0%,100%{ transform:rotate(-3deg); } 50%{ transform:rotate(3deg); } }
+  .lantern .glow{ animation: flicker 2.4s ease-in-out infinite; transform-origin:center; }
+  @keyframes flicker{ 0%,100%{ opacity:0.75; } 45%{ opacity:1; } 60%{ opacity:0.6; } }
+  .spark{ animation: twinkle 2.2s ease-in-out infinite; transform-origin:center; }
+  .spark.s2{ animation-delay:0.7s; }
+  .spark.s3{ animation-delay:1.3s; }
+  @keyframes twinkle{
+    0%,100%{ opacity:0; transform:scale(0.4); }
+    50%{ opacity:1; transform:scale(1); }
+  }
+
+  .bismillah{ text-align:center; font-family:'Amiri', serif; font-size:2.1rem; color:var(--maroon-deep); margin: 8px 0 24px; }
+
+  .hosts{ text-align:center; font-family:'Cormorant Garamond', serif; }
+  .hosts .names{ font-size:1.15rem; font-weight:600; color:var(--maroon); }
+  .hosts .addr{ font-size:0.98rem; opacity:0.85; margin-top:4px; line-height:1.5; }
+
+  .divider{ display:flex; align-items:center; justify-content:center; gap:10px; margin: 28px 0; color:var(--gold); }
+  .divider .line{ height:1px; width:70px; background:linear-gradient(90deg, transparent, var(--gold-soft), transparent); }
+
+  .lede{ text-align:center; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.15rem; opacity:0.85; margin-bottom:8px; }
+
+  .name-block{ text-align:center; margin: 4px 0 18px; }
+  .name-block h1{ position:relative; font-family:'Playfair Display', serif; font-size: clamp(2.1rem, 7vw, 3.1rem); color:var(--maroon); margin:0; line-height:1.15; }
+  .parentage{ font-family:'Cormorant Garamond', serif; font-size:1.02rem; opacity:0.85; margin-top:8px; line-height:1.5; }
+
+  .amp{ text-align:center; font-family:'Playfair Display', serif; font-style:italic; font-size:2rem; color:var(--gold); margin: 6px 0; }
+
+  .profile-frame{
+    width:104px; height:104px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    border:1.5px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    background: radial-gradient(circle at 32% 28%, rgba(255,255,255,0.6), transparent 65%), var(--cream-deep);
+    box-shadow: 0 10px 22px -8px rgba(16,34,26,0.3);
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:2.1rem;
+    color:var(--maroon);
+  }
+  .profile-frame::before{
+    content:"";
+    position:absolute; inset:-7px;
+    border:1px solid var(--gold-soft);
+    border-radius:50%;
+  }
+  .role-label{
+    text-align:center;
+    font-size:0.72rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+  }
+
+  .details{ display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; margin: 4px 0 8px; text-align:center; }
+  .details .item .icon{ width:32px; height:32px; margin:0 auto 8px; color:var(--maroon); }
+  .details .item .big{ font-family:'Playfair Display', serif; font-size:1.4rem; color:var(--maroon); }
+  .details .item .small{ font-size:0.92rem; letter-spacing:0.5px; text-transform:uppercase; }
+  .details .item .tiny{ font-size:0.85rem; opacity:0.75; margin-top:2px; }
+  @media (max-width:560px){ .details{ grid-template-columns:1fr; gap:28px; } }
+
+  .map-link{ display:inline-block; margin-top:10px; font-size:0.85rem; color:var(--maroon); text-decoration:none; border-bottom:1px solid var(--gold-soft); padding-bottom:1px; }
+  .map-link:hover{ color:var(--maroon-deep); }
+
+  .signoff{ text-align:center; margin-top: 46px; }
+  .signoff .heart{ color:var(--maroon); font-size:1.1rem; }
+  .signoff .words{ font-family:'Cormorant Garamond', serif; font-style:italic; margin: 8px 0 6px; opacity:0.85; }
+  .signoff .names{ font-family:'Cormorant Garamond', serif; font-weight:600; color:var(--maroon); font-size:1.05rem; }
+
+  footer{ text-align:center; margin-top:38px; font-size:0.78rem; opacity:0.5; letter-spacing:0.5px; }
+</style>
+</head>
+<body>
+
+<div class="pattern-bg"></div>
+
+<div class="gate" id="gate">
+  <div class="gate-inner">
+    <div class="gate-monogram">N&amp;F</div>
+    <p class="gate-eyebrow">The Nikkah Invitation of</p>
+    <p class="gate-names">Nadeera &amp; Faeis</p>
+    <button class="gate-btn" id="gate-btn" type="button">
+      Open Invitation
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8l9 6 9-6M3 8v9a2 2 0 002 2h14a2 2 0 002-2V8M3 8a2 2 0 012-2h14a2 2 0 012 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="petals" id="petals"></div>
+
+<button class="music-toggle" id="music-toggle" type="button" aria-pressed="true" aria-label="Mute background music">
+  <svg class="icon-on" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 18V5l12-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zM21 16a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+  <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 18V5l12-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zM21 16a3 3 0 11-6 0 3 3 0 016 0zM3 3l18 18"/></svg>
+</button>
+
+<!-- ============ HERO / LANDING ============ -->
+<section class="hero" id="top">
+  <svg class="hero-arch" viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
+    <path d="M40 700 V260 C40 130 130 40 200 40 C270 40 360 130 360 260 V700"
+          fill="none" stroke="#B8862E" stroke-width="1.4" opacity="0.55"/>
+    <path d="M65 700 V262 C65 145 130 65 200 65 C270 65 335 145 335 262 V700"
+          fill="none" stroke="#B8862E" stroke-width="0.8" opacity="0.35"/>
+    <g fill="#D9B36A" opacity="0.55">
+      <ellipse cx="70" cy="140" rx="22" ry="14" transform="rotate(25 70 140)"/>
+      <ellipse cx="330" cy="150" rx="20" ry="13" transform="rotate(-20 330 150)"/>
+    </g>
+  </svg>
+
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="pill">You are lovingly invited</span></div>
+    <div class="hero-bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+
+    <div class="hero-names">
+      <span class="first shine" data-text="Nadeera">Nadeera</span>
+      <span class="hero-amp">&amp;</span>
+      <span class="second shine" data-text="Faeis">Faeis</span>
+    </div>
+
+    <p class="hero-date">20<sup>th</sup> September 2026 <span class="sep">•</span> Highness Auditorium, Edathala</p>
+
+    <div class="countdown-wrap">
+      <div class="countdown-label" id="countdown-label">Counting down to the Nikkah</div>
+      <div class="countdown" id="countdown" aria-hidden="true">
+        <div class="box"><span class="num" id="cd-days">--</span><span class="lbl">Days</span></div>
+        <div class="box"><span class="num" id="cd-hours">--</span><span class="lbl">Hours</span></div>
+        <div class="box"><span class="num" id="cd-mins">--</span><span class="lbl">Mins</span></div>
+        <div class="box"><span class="num" id="cd-secs">--</span><span class="lbl">Secs</span></div>
+      </div>
+      <p class="sr-only" id="countdown-live" aria-live="polite"></p>
+    </div>
+
+    <a href="#invitation" class="scroll-cue">
+      View invitation
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ============ FULL INVITATION ============ -->
+<section class="invite-section" id="invitation">
+  <svg class="corner tl" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#B8862E" stroke-width="1" opacity="0.55">
+      <path d="M10 10 C 60 20, 40 70, 90 80 C 130 90, 120 140, 170 150" stroke-width="1.2"/>
+    </g>
+    <g fill="#D9B36A" opacity="0.85">
+      <ellipse cx="150" cy="45" rx="18" ry="12" transform="rotate(20 150 45)"/>
+      <ellipse cx="168" cy="60" rx="16" ry="11" transform="rotate(70 168 60)"/>
+      <ellipse cx="135" cy="65" rx="15" ry="10" transform="rotate(-30 135 65)"/>
+    </g>
+    <g fill="#F0DFA0" opacity="0.9"><circle cx="150" cy="45" r="7"/></g>
+    <g fill="none" stroke="#4C6B45" stroke-width="1.4" opacity="0.6">
+      <path d="M40 15 q20 20 5 45"/><path d="M55 25 q10 10 2 22"/>
+    </g>
+  </svg>
+
+  <svg class="corner br" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#B8862E" stroke-width="1" opacity="0.55">
+      <path d="M10 10 C 60 20, 40 70, 90 80 C 130 90, 120 140, 170 150" stroke-width="1.2"/>
+    </g>
+    <g fill="#D9B36A" opacity="0.85">
+      <ellipse cx="150" cy="45" rx="18" ry="12" transform="rotate(20 150 45)"/>
+      <ellipse cx="168" cy="60" rx="16" ry="11" transform="rotate(70 168 60)"/>
+      <ellipse cx="135" cy="65" rx="15" ry="10" transform="rotate(-30 135 65)"/>
+    </g>
+    <g fill="#F0DFA0" opacity="0.9"><circle cx="150" cy="45" r="7"/></g>
+    <g fill="none" stroke="#4C6B45" stroke-width="1.4" opacity="0.6">
+      <path d="M40 15 q20 20 5 45"/><path d="M55 25 q10 10 2 22"/>
+    </g>
+  </svg>
+
+  <div class="wrap">
+    <div class="card">
+
+      <div class="lantern-row">
+        <div class="lantern-halo"></div>
+        <svg class="lantern" viewBox="0 0 60 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line x1="30" y1="0" x2="30" y2="14" stroke="#B8862E" stroke-width="1.5"/>
+          <circle cx="30" cy="14" r="3" fill="none" stroke="#B8862E" stroke-width="1.5"/>
+          <path d="M18 20 h24 l-4 10 h-16 z" fill="none" stroke="#B8862E" stroke-width="1.5"/>
+          <rect x="14" y="30" width="32" height="42" rx="4" fill="none" stroke="#B8862E" stroke-width="1.5"/>
+          <rect class="glow" x="19" y="35" width="22" height="32" rx="2" fill="#F3D8A8" opacity="0.8"/>
+          <circle class="spark s1" cx="12" cy="26" r="1.4" fill="#F0DFA0"/>
+          <circle class="spark s2" cx="48" cy="32" r="1.1" fill="#F0DFA0"/>
+          <circle class="spark s3" cx="10" cy="58" r="1.2" fill="#F0DFA0"/>
+          <path d="M18 72 h24 l-4 10 h-16 z" fill="none" stroke="#B8862E" stroke-width="1.5"/>
+          <circle cx="30" cy="86" r="2.5" fill="#B8862E"/>
+        </svg>
+      </div>
+
+      <div class="bismillah reveal">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+
+      <div style="text-align:center; margin-bottom:16px;"><span class="pill">The Families</span></div>
+
+      <div class="hosts reveal">
+        <div class="names">Mr Muhammed Basheer V.I. &amp; Mrs Bushara Basheer</div>
+        <div class="addr">Vadakketholakkara House, North Edathala P.O., Aluva<br>Mob: <a href="tel:+919447605517" style="color:inherit;">9447605517</a></div>
+      </div>
+
+      <div class="divider reveal"><span class="line"></span><span>✦</span><span class="line"></span></div>
+
+      <p class="lede reveal">We joyfully invite you to the wedding of</p>
+
+      <div class="fold-line"></div>
+
+      <div class="name-block reveal">
+        <div class="profile-frame" aria-hidden="true">N</div>
+        <div class="role-label">The Bride</div>
+        <h1 class="shine" data-text="Nadeera Basheer">Nadeera Basheer</h1>
+        <p class="parentage">Grand D/o V A Ibrahimkutty &amp; Sainaba N A<br>Late TM Muhammed &amp; Fathima K A</p>
+      </div>
+
+      <div class="amp reveal">&amp;</div>
+
+      <div class="name-block reveal">
+        <div class="profile-frame" aria-hidden="true">F</div>
+        <div class="role-label">The Groom</div>
+        <h1 class="shine" data-text="Muhammed Faeis">Muhammed Faeis</h1>
+        <p class="parentage">S/o Mr. Firos &amp; Mrs. Rafeeda Firos<br>Annu House, Muthuvattoor P.O., Chavakkad</p>
+      </div>
+
+      <div style="text-align:center; margin:44px 0 20px;"><span class="pill">When &amp; Where</span></div>
+
+      <div class="details">
+        <div class="item reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+          <div class="big">20<sup>th</sup></div>
+          <div class="small">September 2026</div>
+          <div class="tiny">9 Rabi Al-Akhir 1448</div>
+        </div>
+        <div class="item reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>
+          <div class="big" style="font-size:1.05rem;">Highness Auditorium</div>
+          <div class="small">Edathala</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Highness+Auditorium+Edathala" target="_blank" rel="noopener">Get directions</a>
+        </div>
+        <div class="item reveal">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M4 20c0-4 3.5-6 8-6s8 2 8 6"/><circle cx="12" cy="8" r="3.5"/></svg>
+          <div class="big">11:30 AM</div>
+          <div class="small">Nikkah</div>
+        </div>
+      </div>
+
+      <div class="divider reveal"><span class="line"></span><span>❦</span><span class="line"></span></div>
+
+      <div class="signoff reveal">
+        <div class="heart">♥</div>
+        <p class="words">With love &amp; dua</p>
+        <p class="names">Muhammed Ismail &amp; Nazira Mariyam</p>
+      </div>
+
+    </div>
+
+    <footer>Nadeera &amp; Faeis · 20 September 2026</footer>
+  </div>
+</section>
+
+<!-- ============ DOWNLOAD ============ -->
+<audio id="bg-music" src="assets/wedding-song.mp3" loop preload="auto" style="display:none;"></audio>
+
+<div class="download-wrap no-print">
+  <a class="gate-btn" id="download-btn" href="assets/invitation-card.jpg" download="Nadeera-Faeis-Invitation.jpg">
+    Download Invitation
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+  </a>
+  <p style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:0.85rem; color:var(--ink); opacity:0.65; margin-top:10px;">Saves this invitation as a file you can keep or share</p>
+</div>
+
+<script>
+  const target = new Date("2026-09-20T11:30:00+05:30").getTime();
+  const countdownLabel = document.getElementById('countdown-label');
+  const countdownLive = document.getElementById('countdown-live');
+  let arrivedShown = false;
+  function tick(){
+    const now = Date.now();
+    let diff = target - now;
+    if(diff <= 0){
+      if(!arrivedShown){
+        arrivedShown = true;
+        countdownLabel.textContent = 'The Nikkah day is here';
+        document.getElementById('countdown').style.display = 'none';
+        countdownLive.textContent = 'The Nikkah day has arrived.';
+      }
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-days').textContent = d;
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+    if(s === 0 && m % 1 === 0){
+      countdownLive.textContent = `${d} days, ${h} hours and ${m} minutes until the Nikkah.`;
+    }
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // Opening gate
+  const gate = document.getElementById('gate');
+  const gateBtn = document.getElementById('gate-btn');
+  const bgMusic = document.getElementById('bg-music');
+  gateBtn.addEventListener('click', () => {
+    document.body.classList.add('opened');
+    gate.classList.add('closed');
+    bgMusic.volume = 0.35;
+    bgMusic.play().catch(() => { /* browser blocked autoplay; mute button still works */ });
+  });
+
+  // Background music mute toggle
+  const musicToggle = document.getElementById('music-toggle');
+  musicToggle.addEventListener('click', () => {
+    bgMusic.muted = !bgMusic.muted;
+    musicToggle.classList.toggle('muted', bgMusic.muted);
+    musicToggle.setAttribute('aria-pressed', String(!bgMusic.muted));
+    musicToggle.setAttribute('aria-label', bgMusic.muted ? 'Unmute background music' : 'Mute background music');
+    if(!bgMusic.muted && bgMusic.paused){ bgMusic.play().catch(() => {}); }
+  });
+
+  // Download invitation — handled natively by the anchor's download attribute
+
+  // Scroll-triggered reveal for the invitation card contents
+  const revealEls = document.querySelectorAll('.reveal');
+  revealEls.forEach((el, i) => { el.style.transitionDelay = (i % 6) * 70 + 'ms'; });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  const petalHost = document.getElementById('petals');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!prefersReduced){
+    const colors = ['#D9B36A', '#F0DFA0', '#D9A83D'];
+    for(let i=0;i<16;i++){
+      const p = document.createElement('div');
+      p.className = 'petal';
+      const size = 6 + Math.random()*8;
+      p.style.width = size+'px';
+      p.style.height = (size*0.7)+'px';
+      p.style.left = Math.random()*100+'vw';
+      p.style.background = colors[i % colors.length];
+      p.style.borderRadius = '60% 40% 60% 40%';
+      p.style.animationDuration = (14 + Math.random()*10)+'s';
+      p.style.animationDelay = (Math.random()*10)+'s';
+      petalHost.appendChild(p);
+    }
+  }
+</script>
+
+</body>
+</html>
