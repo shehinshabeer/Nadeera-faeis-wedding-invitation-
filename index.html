@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#1E3D2C">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --cream: #F6F1E4;
@@ -27,9 +27,10 @@
   }
 
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; overflow-x:hidden; width:100%;}
   body{
     margin:0;
+    width:100%;
     background-color:var(--cream);
     color:var(--ink);
     font-family:'EB Garamond', serif;
@@ -202,18 +203,22 @@
 
   /* gold shine sweep used on couple names */
   .shine{ position:relative; display:inline-block; }
-  .shine::before{
-    content:attr(data-text);
-    position:absolute; left:0; top:0; width:100%; height:100%;
-    background-image:linear-gradient(115deg, transparent 25%, rgba(233,201,120,0.95) 48%, transparent 68%);
-    background-size:260% 100%;
-    background-repeat:no-repeat;
-    background-position: -60% 0;
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
-    animation: shineSweep 7s ease-in-out infinite;
-    pointer-events:none;
+  .shine::before{ content:none; }
+  @supports ((background-clip:text) or (-webkit-background-clip:text)){
+    .shine::before{
+      content:attr(data-text);
+      position:absolute; left:0; top:0; width:100%; height:100%;
+      background-image:linear-gradient(115deg, transparent 25%, rgba(233,201,120,0.95) 48%, transparent 68%);
+      background-size:260% 100%;
+      background-repeat:no-repeat;
+      background-position: -60% 0;
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+      color:transparent;
+      animation: shineSweep 7s ease-in-out infinite;
+      pointer-events:none;
+    }
   }
   @keyframes shineSweep{
     0%, 40%{ background-position:-60% 0; }
@@ -231,12 +236,13 @@
   /* ================= HERO / LANDING ================= */
   .hero{
     position:relative;
+    min-height:100vh;
     min-height:100svh;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
     text-align:center;
-    padding: 40px 22px;
+    padding: clamp(130px, 20vh, 200px) 22px 60px;
     background:
       url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.10'/></svg>"),
       radial-gradient(ellipse 80% 60% at 50% 0%, rgba(184,134,46,0.14), transparent 60%),
@@ -259,7 +265,7 @@
   .hero-inner{
     position:relative;
     z-index:2;
-    max-width:640px;
+    max-width:420px;
   }
   .hero-inner > *{
     opacity:0;
@@ -279,20 +285,22 @@
   }
 
   .hero-bismillah{
-    font-family:'Amiri', serif;
-    font-size:1.5rem;
+    font-family:'Aref Ruqaa', serif;
+    font-weight:700;
+    font-size:1.15rem;
     color:var(--maroon-deep);
     margin-bottom:22px;
-    opacity:0.85;
+    opacity:0.9;
   }
 
   .hero-names{
-    font-family:'Playfair Display', serif;
+    font-family:'Cinzel', serif;
     font-weight:600;
+    letter-spacing:1px;
     color:var(--maroon);
-    line-height:1.1;
+    line-height:1.3;
   }
-  .hero-names .first{ font-size:clamp(2.3rem, 8vw, 3.6rem); display:block; position:relative; }
+  .hero-names .first{ font-size:clamp(2.1rem, 7.5vw, 3.3rem); display:block; position:relative; }
   .hero-amp{
     font-family:'Playfair Display', serif;
     font-style:italic;
@@ -300,9 +308,9 @@
     color:var(--gold);
     font-size:clamp(1.4rem, 4vw, 1.9rem);
     display:block;
-    margin:6px 0;
+    margin:8px 0;
   }
-  .hero-names .second{ font-size:clamp(2.3rem, 8vw, 3.6rem); display:block; position:relative; }
+  .hero-names .second{ font-size:clamp(2.1rem, 7.5vw, 3.3rem); display:block; position:relative; }
 
   .hero-date{
     margin-top:22px;
@@ -410,7 +418,7 @@
     box-shadow:
       0 30px 60px -20px rgba(16,34,26,0.28),
       0 10px 24px -12px rgba(16,34,26,0.18);
-    transform: perspective(1400px) rotateX(0.6deg);
+    transform: none;
   }
   .card::before, .card::after{
     content:""; position:absolute; width:36px; height:36px; border:1px solid var(--gold);
@@ -450,7 +458,7 @@
     50%{ opacity:1; transform:scale(1); }
   }
 
-  .bismillah{ text-align:center; font-family:'Amiri', serif; font-size:2.1rem; color:var(--maroon-deep); margin: 8px 0 24px; }
+  .bismillah{ text-align:center; font-family:'Aref Ruqaa', serif; font-weight:700; font-size:1.4rem; color:var(--maroon-deep); margin: 8px 0 24px; }
 
   .hosts{ text-align:center; font-family:'Cormorant Garamond', serif; }
   .hosts .names{ font-size:1.15rem; font-weight:600; color:var(--maroon); }
@@ -462,30 +470,15 @@
   .lede{ text-align:center; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.15rem; opacity:0.85; margin-bottom:8px; }
 
   .name-block{ text-align:center; margin: 4px 0 18px; }
-  .name-block h1{ position:relative; font-family:'Playfair Display', serif; font-size: clamp(2.1rem, 7vw, 3.1rem); color:var(--maroon); margin:0; line-height:1.15; }
+  .name-block h1{ position:relative; font-family:'Cinzel', serif; font-weight:600; letter-spacing:1px; font-size: clamp(2rem, 6.8vw, 2.9rem); color:var(--maroon); margin:0; line-height:1.3; }
   .parentage{ font-family:'Cormorant Garamond', serif; font-size:1.02rem; opacity:0.85; margin-top:8px; line-height:1.5; }
 
   .amp{ text-align:center; font-family:'Playfair Display', serif; font-style:italic; font-size:2rem; color:var(--gold); margin: 6px 0; }
 
-  .profile-frame{
-    width:104px; height:104px;
-    margin:0 auto 16px;
-    border-radius:50%;
-    border:1.5px solid var(--gold);
-    display:flex; align-items:center; justify-content:center;
-    position:relative;
-    background: radial-gradient(circle at 32% 28%, rgba(255,255,255,0.6), transparent 65%), var(--cream-deep);
-    box-shadow: 0 10px 22px -8px rgba(16,34,26,0.3);
-    font-family:'Playfair Display', serif;
-    font-style:italic;
-    font-size:2.1rem;
-    color:var(--maroon);
-  }
-  .profile-frame::before{
-    content:"";
-    position:absolute; inset:-7px;
-    border:1px solid var(--gold-soft);
-    border-radius:50%;
+  .name-ornament{
+    width:34px; height:34px;
+    margin:0 auto 12px;
+    color:var(--gold);
   }
   .role-label{
     text-align:center;
@@ -493,7 +486,7 @@
     letter-spacing:3px;
     text-transform:uppercase;
     color:var(--gold);
-    margin-bottom:10px;
+    margin-bottom:8px;
   }
 
   .details{ display:grid; grid-template-columns: repeat(3, 1fr); gap:18px; margin: 4px 0 8px; text-align:center; }
@@ -647,7 +640,7 @@
       <div class="fold-line"></div>
 
       <div class="name-block reveal">
-        <div class="profile-frame" aria-hidden="true">N</div>
+        <svg class="name-ornament" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M17 6c1.8 0 3 1.6 3 3.4 0 1.9-1.4 3.3-3 4.6-1.6-1.3-3-2.7-3-4.6C14 7.6 15.2 6 17 6z"/><path d="M17 6c1.8 0 3 1.6 3 3.4 0 1.9-1.4 3.3-3 4.6M17 6c-1.8 0-3 1.6-3 3.4 0 1.9 1.4 3.3 3 4.6" transform="rotate(72 17 17)"/><path d="M17 6c1.8 0 3 1.6 3 3.4 0 1.9-1.4 3.3-3 4.6M17 6c-1.8 0-3 1.6-3 3.4 0 1.9 1.4 3.3 3 4.6" transform="rotate(144 17 17)"/><path d="M17 6c1.8 0 3 1.6 3 3.4 0 1.9-1.4 3.3-3 4.6M17 6c-1.8 0-3 1.6-3 3.4 0 1.9 1.4 3.3 3 4.6" transform="rotate(216 17 17)"/><path d="M17 6c1.8 0 3 1.6 3 3.4 0 1.9-1.4 3.3-3 4.6M17 6c-1.8 0-3 1.6-3 3.4 0 1.9 1.4 3.3 3 4.6" transform="rotate(288 17 17)"/><circle cx="17" cy="17" r="2.2" fill="currentColor" stroke="none"/></svg>
         <div class="role-label">The Bride</div>
         <h1 class="shine" data-text="Nadeera Basheer">Nadeera Basheer</h1>
         <p class="parentage">Grand D/o V A Ibrahimkutty &amp; Sainaba N A<br>Late TM Muhammed &amp; Fathima K A</p>
@@ -656,7 +649,7 @@
       <div class="amp reveal">&amp;</div>
 
       <div class="name-block reveal">
-        <div class="profile-frame" aria-hidden="true">F</div>
+        <svg class="name-ornament" viewBox="0 0 34 34" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M17 3l3.5 8.5L29 15l-8.5 3.5L17 27l-3.5-8.5L5 15l8.5-3.5z"/></svg>
         <div class="role-label">The Groom</div>
         <h1 class="shine" data-text="Muhammed Faeis">Muhammed Faeis</h1>
         <p class="parentage">S/o Mr. Firos &amp; Mrs. Rafeeda Firos<br>Annu House, Muthuvattoor P.O., Chavakkad</p>
@@ -699,14 +692,13 @@
 </section>
 
 <!-- ============ DOWNLOAD ============ -->
-<audio id="bg-music" src="assets/wedding-song.mp3" loop preload="auto" style="display:none;"></audio>
-
+<!-- ============ DOWNLOAD ============ -->
 <div class="download-wrap no-print">
-  <a class="gate-btn" id="download-btn" href="assets/invitation-card.jpg" download="Nadeera-Faeis-Invitation.jpg">
+  <button class="gate-btn" id="download-btn" type="button">
     Download Invitation
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-  </a>
-  <p style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:0.85rem; color:var(--ink); opacity:0.65; margin-top:10px;">Saves this invitation as a file you can keep or share</p>
+  </button>
+  <p style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:0.85rem; color:var(--ink); opacity:0.65; margin-top:10px;">Opens the print dialog — choose "Save as PDF" to download</p>
 </div>
 
 <script>
@@ -744,25 +736,15 @@
   // Opening gate
   const gate = document.getElementById('gate');
   const gateBtn = document.getElementById('gate-btn');
-  const bgMusic = document.getElementById('bg-music');
   gateBtn.addEventListener('click', () => {
     document.body.classList.add('opened');
     gate.classList.add('closed');
-    bgMusic.volume = 0.35;
-    bgMusic.play().catch(() => { /* browser blocked autoplay; mute button still works */ });
   });
 
-  // Background music mute toggle
-  const musicToggle = document.getElementById('music-toggle');
-  musicToggle.addEventListener('click', () => {
-    bgMusic.muted = !bgMusic.muted;
-    musicToggle.classList.toggle('muted', bgMusic.muted);
-    musicToggle.setAttribute('aria-pressed', String(!bgMusic.muted));
-    musicToggle.setAttribute('aria-label', bgMusic.muted ? 'Unmute background music' : 'Mute background music');
-    if(!bgMusic.muted && bgMusic.paused){ bgMusic.play().catch(() => {}); }
+  // Download invitation (opens print dialog; user chooses "Save as PDF")
+  document.getElementById('download-btn').addEventListener('click', () => {
+    window.print();
   });
-
-  // Download invitation — handled natively by the anchor's download attribute
 
   // Scroll-triggered reveal for the invitation card contents
   const revealEls = document.querySelectorAll('.reveal');
@@ -787,7 +769,7 @@
       const size = 6 + Math.random()*8;
       p.style.width = size+'px';
       p.style.height = (size*0.7)+'px';
-      p.style.left = Math.random()*100+'vw';
+      p.style.left = (Math.random()*92)+'vw';
       p.style.background = colors[i % colors.length];
       p.style.borderRadius = '60% 40% 60% 40%';
       p.style.animationDuration = (14 + Math.random()*10)+'s';
