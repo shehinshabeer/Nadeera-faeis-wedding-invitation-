@@ -43,7 +43,7 @@
   }
 
   @media print{
-    .gate, .pattern-bg, .petals, .music-toggle, .song-section, .letter-section, .no-print, .scroll-cue{ display:none !important; }
+    .gate, .pattern-bg, .petals, .music-toggle, .no-print, .scroll-cue{ display:none !important; }
     body::before{ display:none !important; }
     .hero{ min-height:auto; page-break-after: always; }
     .card{ box-shadow:none !important; transform:none !important; }
@@ -138,65 +138,12 @@
     font-size:0.95rem;
     letter-spacing:2px;
     text-transform:uppercase;
+    text-decoration:none;
     cursor:pointer;
     transition: background 0.3s ease, color 0.3s ease;
   }
   .gate-btn:hover{ background:var(--maroon); color:var(--cream); }
   .gate-btn svg{ width:16px; height:16px; }
-
-  /* ================= Wedding song ================= */
-  .song-section{
-    position:relative; z-index:1;
-    max-width:640px;
-    margin:0 auto;
-    padding: 20px 20px 70px;
-  }
-  .song-frame{
-    position:relative;
-    text-align:center;
-    padding:32px 28px;
-    border:1px solid var(--gold-soft);
-    background: rgba(255,252,246,0.55);
-    box-shadow: 0 24px 50px -20px rgba(16,34,26,0.25);
-  }
-  .song-title{
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-size:1.15rem;
-    color:var(--maroon);
-    margin:0 0 16px;
-  }
-  .song-frame audio{
-    accent-color: var(--maroon);
-  }
-  .song-credit{
-    font-size:0.75rem;
-    letter-spacing:0.5px;
-    color:var(--ink);
-    opacity:0.55;
-    margin:14px 0 0;
-  }
-
-  /* ================= Invitation letter (photo) ================= */
-  .letter-section{
-    position:relative; z-index:1;
-    max-width:640px;
-    margin:0 auto;
-    padding: 0 20px 70px;
-    text-align:center;
-  }
-  .letter-frame{
-    padding:20px;
-    border:1px solid var(--gold-soft);
-    background: rgba(255,252,246,0.55);
-    box-shadow: 0 24px 50px -20px rgba(16,34,26,0.25);
-  }
-  .letter-frame img{
-    display:block;
-    width:100%;
-    height:auto;
-    border:1px solid var(--gold-soft);
-  }
 
   /* ================= Download ================= */
   .download-wrap{
@@ -716,37 +663,18 @@
   </div>
 </section>
 
-<!-- ============ WEDDING SONG ============ -->
-<div class="song-section no-print">
-  <div class="song-frame reveal">
-    <p class="song-title">Play our wedding song</p>
-    <audio id="song-player" controls preload="none" style="width:100%;">
-      <source src="assets/wedding-song.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-    <p class="song-credit">Tap play to listen along as you read the invitation</p>
-  </div>
-</div>
-
-<!-- ============ INVITATION LETTER ============ -->
-<div class="letter-section">
-  <div style="text-align:center; margin-bottom:16px;"><span class="pill">Invitation Letter</span></div>
-  <div class="letter-frame reveal">
-    <img src="assets/invitation-card.jpg" alt="Nadeera & Faeis Nikkah invitation letter" loading="lazy">
-  </div>
-</div>
-
 <!-- ============ DOWNLOAD ============ -->
 <!-- ============ DOWNLOAD ============ -->
 <div class="download-wrap no-print">
-  <button class="gate-btn" id="download-btn" type="button">
+  <a class="gate-btn" id="download-btn" href="assets/invitation-card.jpg" download="Nadeera-Faeis-Invitation.jpg">
     Download Invitation
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
-  </button>
-  <p style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:0.85rem; color:var(--ink); opacity:0.65; margin-top:10px;">Opens the print dialog — choose "Save as PDF" to download</p>
+  </a>
+  <p style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:0.85rem; color:var(--ink); opacity:0.65; margin-top:10px;">Saves the invitation letter as an image to your device</p>
 </div>
 
 <script>
+
   const target = new Date("2026-09-20T11:30:00+05:30").getTime();
   const countdownLabel = document.getElementById('countdown-label');
   const countdownLive = document.getElementById('countdown-live');
@@ -780,7 +708,6 @@
 
   // Background music
   const bgMusic = document.getElementById('bg-music');
-  const songPlayer = document.getElementById('song-player');
   const musicToggle = document.getElementById('music-toggle');
   let musicPlaying = false;
 
@@ -804,8 +731,6 @@
     if(musicPlaying){
       pauseMusic();
     } else {
-      // pause the inline player if it's mid-play, to avoid overlapping audio
-      if(!songPlayer.paused){ songPlayer.pause(); }
       playMusic();
     }
   });
@@ -813,11 +738,6 @@
   // Keep the floating toggle icon in sync if the background track ends/pauses elsewhere
   bgMusic.addEventListener('pause', () => setMusicState(false));
   bgMusic.addEventListener('play', () => setMusicState(true));
-
-  // If the guest plays the inline song player, don't double up the background track
-  songPlayer.addEventListener('play', () => {
-    if(!bgMusic.paused){ bgMusic.pause(); }
-  });
 
   // Opening gate
   const gate = document.getElementById('gate');
@@ -827,11 +747,6 @@
     gate.classList.add('closed');
     // start the background music on this user gesture (browsers block autoplay otherwise)
     playMusic();
-  });
-
-  // Download invitation (opens print dialog; user chooses "Save as PDF")
-  document.getElementById('download-btn').addEventListener('click', () => {
-    window.print();
   });
 
   // Scroll-triggered reveal for the invitation card contents
