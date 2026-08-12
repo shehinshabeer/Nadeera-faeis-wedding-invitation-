@@ -2,382 +2,554 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-<title>Nadeera & Muhammed Faais | Wedding Invitation</title>
-<meta name="theme-color" content="#f8efef">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nadeera & Faeis — Nikkah Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Allura&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Tangerine:wght@400;700&family=Amiri&display=swap" rel="stylesheet">
 <style>
-:root{
- --bg:#fbf4f3;--paper:#fffafa;--rose:#a76473;--rose2:#c9929e;
- --wine:#783c4c;--deep:#542735;--gold:#c59a61;--ink:#46383b;--muted:#8b777b;
- --line:rgba(120,60,76,.18);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.55}
-body.locked{overflow:hidden}
-button,input,textarea{font:inherit}
-a{text-decoration:none;color:inherit}
-section{position:relative;overflow:hidden}
-.container{width:min(92%,760px);margin:auto}
-.script{font-family:"Allura",cursive}
-.serif{font-family:"Playfair Display",serif}
+  :root{
+    --cream: #FBF2E4;
+    --cream-deep: #F3E4CB;
+    --maroon: #6E1F26;
+    --maroon-soft: #8C3B3F;
+    --gold: #B4893C;
+    --gold-light: #D8B36B;
+    --sage: #7C8A5E;
+    --blush: #E7B6AE;
+    --ink: #3B2A22;
+  }
 
-/* opening */
-.opening{
- position:fixed;inset:0;z-index:1000;background:
- radial-gradient(circle at 50% 35%,rgba(255,255,255,.96),transparent 28%),
- linear-gradient(145deg,#faf1f0,#f3e4e5 55%,#ead6dc);
- display:grid;place-items:center;transition:opacity 1.1s ease,visibility 1.1s;
-}
-.opening.hide{opacity:0;visibility:hidden;pointer-events:none}
-.opening::before,.opening::after{content:"";position:absolute;border:1px solid rgba(165,100,115,.22);border-radius:50%;animation:pulse 6s ease-in-out infinite}
-.opening::before{width:78vw;height:78vw;max-width:650px;max-height:650px}
-.opening::after{width:94vw;height:94vw;max-width:780px;max-height:780px;animation-delay:-2s}
-@keyframes pulse{50%{transform:scale(1.04);opacity:.5}}
-.cover{position:relative;z-index:3;width:min(90%,470px);text-align:center;padding:48px 30px 56px}
-.cover .mini{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
-.cover .bismillah{font-size:22px;color:var(--wine);margin-bottom:18px}
-.cover h1{margin:0;color:var(--wine);font-size:clamp(62px,18vw,100px);font-weight:400;line-height:.8}
-.cover .amp{font-family:"Playfair Display";font-size:34px;color:var(--gold);display:block;margin:13px 0}
-.cover .date{margin-top:25px;letter-spacing:.12em;font-size:13px;color:var(--muted)}
-.seal-wrap{margin:30px auto 0;display:flex;flex-direction:column;align-items:center;gap:9px}
-.seal{
- width:92px;height:92px;border-radius:50%;border:1px solid #ead5b4;
- background:radial-gradient(circle at 35% 30%,#c88e9b,#914b5c 68%,#743c4c);
- color:#fff8f3;display:grid;place-items:center;cursor:pointer;
- box-shadow:0 10px 28px rgba(100,48,65,.22),inset 0 0 0 6px rgba(255,255,255,.12);
- transition:.35s;position:relative;
-}
-.seal::after{content:"";position:absolute;inset:9px;border:1px dashed rgba(255,255,255,.5);border-radius:50%}
-.seal span{position:relative;z-index:2;font-size:14px;letter-spacing:.05em}
-.seal:hover{transform:scale(1.06) rotate(-2deg)}
-.tap{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}
+  *{margin:0;padding:0;box-sizing:border-box;}
 
-/* global decorations */
-.flower-line{position:absolute;opacity:.18;color:var(--rose);font-size:110px;line-height:1;pointer-events:none}
-.flower-left{left:-38px;top:35px}.flower-right{right:-45px;bottom:10px;transform:rotate(180deg)}
-.ornament{color:var(--gold);text-align:center;font-size:25px;margin:20px 0}
-.eyebrow{text-align:center;color:var(--gold);font-size:11px;letter-spacing:.28em;text-transform:uppercase}
-.title{text-align:center;color:var(--wine);font-weight:500;font-size:clamp(30px,7vw,44px);line-height:1.05;margin:9px 0}
-.subtitle{text-align:center;color:var(--muted);line-height:1.55;max-width:570px;margin:0 auto}
-.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}
-.reveal.show{opacity:1;transform:none}
+  html{scroll-behavior:smooth;}
 
-/* hero */
-.hero{min-height:100svh;padding:90px 0 70px;display:grid;place-items:center;background:
- radial-gradient(circle at 50% 20%,rgba(255,255,255,.9),transparent 28%),var(--bg)}
-.hero-inner{text-align:center}
-.hero .tiny{color:var(--gold);letter-spacing:.25em;text-transform:uppercase;font-size:11px}
-.hero-names{font-size:clamp(70px,18vw,130px);line-height:.72;color:var(--wine);margin:28px 0 25px}
-.hero-names .and{display:block;font-family:"Playfair Display";font-size:30px;line-height:1.8;color:var(--gold)}
-.hero-date{font-family:"Playfair Display";font-size:15px;letter-spacing:.12em;color:var(--ink)}
-.scrollhint{margin-top:40px;color:var(--rose);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
-.scrollhint i{display:block;width:1px;height:45px;background:var(--rose2);margin:10px auto 0}
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    position: relative;
+  }
 
-/* invite */
-.invite{padding:88px 0;background:#fffafa}
-.invite-card{border:1px solid var(--line);padding:40px 25px;background:
- linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)),var(--paper);
- box-shadow:0 15px 45px rgba(98,53,64,.08)}
-.invite-card .script{font-size:54px;color:var(--wine);text-align:center}
-.invite-card p{text-align:center;line-height:1.65;margin:10px auto;max-width:570px}
+  /* subtle geometric texture */
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(180,137,60,0.12) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
+  .frame{
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding: 0 24px;
+  }
 
-.invite-card .parents{
-  font-family:"Playfair Display",serif;
-  font-size:20px;color:var(--wine);margin:5px auto 3px;
-}
-.invite-card .address,.invite-card .family-detail{
-  font-size:15px;color:var(--muted);line-height:1.7;
-}
-.invite-card .address span{color:var(--ink)}
-.invite-card .caption{font-size:56px;line-height:1.05;margin:12px 0;color:var(--wine)}
-.couple-divider{
-  display:flex;align-items:center;justify-content:center;gap:18px;
-  color:var(--gold);margin:24px 0 8px;
-}
-.couple-divider:before,.couple-divider:after{
-  content:"";width:95px;height:1px;background:var(--line);
-}
-.couple-divider b{
-  font-family:"Playfair Display",serif;font-size:28px;font-weight:400;color:var(--gold);
-}
-.event-grid{align-items:stretch}
-.event{min-height:155px;display:flex;flex-direction:column;justify-content:center}
-.family{padding:10px 8px}
-.family h3{letter-spacing:.12em;font-size:12px}
+  .gold-rule{
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 28px 0;
+  }
 
-/* details */
-.details{padding:90px 0;background:linear-gradient(#f9efef,#fdf7f6)}
-.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:38px}
-.event{border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:22px 10px;text-align:center}
-.event .icon{font-size:30px;color:var(--wine);height:38px}
-.event strong{display:block;font-family:"Playfair Display";font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--rose)}
-.event b{display:block;color:var(--wine);font-size:22px;font-weight:500;margin-top:7px}
-.event small{color:var(--muted);font-size:15px;line-height:1.35}
+  .diamond-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    margin: 20px 0;
+    color: var(--gold);
+  }
+  .diamond-divider .line{ width:70px; height:1px; background: var(--gold-light);}
+  .diamond-divider .mark{
+    width:9px;height:9px;
+    background: var(--gold);
+    transform: rotate(45deg);
+  }
 
-/* countdown */
-.count-wrap{padding:80px 0;background:#fffafa;text-align:center}
-.countdown{display:grid;grid-template-columns:repeat(4,1fr);max-width:650px;margin:34px auto 0}
-.time{padding:12px 5px;border-right:1px solid var(--line)}
-.time:last-child{border:0}
-.time b{font-family:"Playfair Display";font-size:34px;font-weight:500;color:var(--wine);display:block}
-.time span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  /* ===== HERO ===== */
+  .hero{
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 60px 24px 40px;
+    overflow: hidden;
+  }
 
-/* gallery / image */
-.moments{padding:90px 0}
-.photo-frame{margin:38px auto 0;width:min(94%,500px);padding:9px;background:#fff;box-shadow:0 20px 50px rgba(76,45,54,.14);transform:rotate(-1deg)}
-.photo-frame img{display:block;width:100%;height:auto}
-.caption{text-align:center;margin:28px auto 0;color:var(--wine);font-size:42px}
+  .lantern{
+    position: absolute;
+    top: -10px;
+    width: 90px;
+    z-index: 1;
+    animation: sway 6s ease-in-out infinite;
+    transform-origin: top center;
+    filter: drop-shadow(0 6px 14px rgba(110,31,38,0.18));
+  }
+  .lantern.left{ left: 4%; animation-delay: 0s;}
+  .lantern.right{ right: 4%; width: 110px; top: 30px; animation-delay: .8s;}
 
-/* family */
-.families{padding:90px 0;background:#f8eeee}
-.family-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;text-align:center;margin-top:38px}
-.family h3{font-family:"Playfair Display";font-size:17px;letter-spacing:.06em;color:var(--gold);font-weight:500}
-.family p{line-height:1.55;margin:9px 0}
-.family-sep{color:var(--gold);font-size:28px}
+  @media (max-width: 640px){
+    .lantern{ width: 56px; }
+    .lantern.right{ width: 68px; }
+  }
 
-/* venue */
-.venue{padding:90px 0;background:#fffafa}
-.venue-box{margin-top:35px;border:1px solid var(--line);padding:30px;text-align:center}
-.venue-box .pin{font-size:38px;color:var(--wine)}
-.venue-box h3{font-family:"Playfair Display";font-size:25px;color:var(--wine);margin:10px 0 4px}
-.venue-box p{color:var(--muted);margin:0}
-.map-btn,.submit{
- display:inline-block;margin-top:22px;padding:11px 24px;border:1px solid var(--gold);
- border-radius:999px;color:var(--wine);background:#fff;letter-spacing:.06em;cursor:pointer
-}
+  @keyframes sway{
+    0%,100%{ transform: rotate(-3deg); }
+    50%{ transform: rotate(3deg); }
+  }
 
-/* RSVP */
-.rsvp{padding:90px 0;background:linear-gradient(145deg,#7d4656,#5c2d3b);color:#fff4f2}
-.rsvp .eyebrow{color:#e5c98f}.rsvp .title{color:#fff4f2}.rsvp .subtitle{color:#f1dfe0}
-.form{margin:35px auto 0;max-width:560px}
-.field{margin-bottom:14px}
-.field input,.field textarea{
- width:100%;padding:14px 15px;border:1px solid rgba(255,255,255,.25);
- border-radius:2px;background:rgba(255,255,255,.09);color:white;outline:none
-}
-.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.7)}
-.submit{background:#fff7f0;border-color:#e6c994;color:var(--wine);display:block;margin:20px auto 0}
-.thanks{margin-top:20px;text-align:center;min-height:25px;color:#f0d59e}
+  .corner-flora{
+    position: absolute;
+    width: 230px;
+    height: auto;
+    z-index: 0;
+    opacity: .95;
+  }
+  .corner-flora.tr{ top: -20px; right: -40px; }
+  .corner-flora.bl{ bottom: -20px; left: -40px; transform: scaleX(-1) scaleY(-1); }
+  @media (max-width: 640px){
+    .corner-flora{ width: 140px; }
+  }
 
-/* footer */
-.footer{padding:80px 20px 60px;text-align:center;background:#4c2430;color:#fff3f0}
-.footer .script{font-size:54px;color:#e5c98f}
-.footer p{margin:12px 0;color:#f0dcdd}
-.footer small{letter-spacing:.16em;text-transform:uppercase;color:#d8bfc2;font-size:10px}
+  .arch{
+    position: relative;
+    margin-top: 40px;
+    padding: 46px 30px 30px;
+    border: 1px solid var(--gold);
+    border-radius: 130px 130px 8px 8px;
+    background: linear-gradient(180deg, rgba(255,252,246,0.6), rgba(255,252,246,0.15));
+    max-width: 460px;
+    z-index: 2;
+  }
+  .arch::before{
+    content:"";
+    position:absolute;
+    inset: 7px;
+    border: 1px solid var(--gold-light);
+    border-radius: 122px 122px 4px 4px;
+  }
 
-/* mobile */
-@media(max-width:650px){
- .event-grid{grid-template-columns:1fr}
- .event{border-right:1px solid var(--line);border-left:1px solid var(--line)}
- .countdown{grid-template-columns:repeat(2,1fr);gap:8px}
- .time{border:1px solid var(--line);padding:16px}
- .family-grid{grid-template-columns:1fr;gap:10px}
- .family-sep{transform:rotate(90deg)}
- .hero{padding-top:80px}
- .invite-card{padding:35px 18px}
-}
+  .bismillah{
+    font-family: 'Amiri', serif;
+    font-size: clamp(1.6rem, 5vw, 2.3rem);
+    color: var(--maroon);
+    line-height: 1.4;
+    direction: rtl;
+  }
+
+  .eyebrow{
+    margin-top: 26px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    font-size: .82rem;
+    color: var(--gold);
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+  }
+
+  .hosts{
+    margin-top: 10px;
+    font-size: clamp(1.2rem, 3.4vw, 1.55rem);
+    color: var(--maroon);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .host-address{
+    margin-top: 6px;
+    font-size: 1rem;
+    color: var(--ink);
+    opacity: .85;
+    line-height: 1.6;
+  }
+
+  .invite-line{
+    margin-top: 34px;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--ink);
+    max-width: 420px;
+  }
+
+  .couple-names{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .name{
+    font-family: 'Tangerine', cursive;
+    font-size: clamp(3.6rem, 11vw, 5.5rem);
+    color: var(--maroon);
+    line-height: 1;
+    font-weight: 700;
+  }
+
+  .name-sub{
+    font-size: .95rem;
+    color: var(--ink);
+    opacity: .8;
+    line-height: 1.55;
+    max-width: 380px;
+  }
+
+  .ampersand{
+    font-family: 'Tangerine', cursive;
+    font-size: 3.2rem;
+    color: var(--gold);
+    margin: 6px 0;
+  }
+
+  /* ===== DETAILS ===== */
+  .details{
+    padding: 70px 24px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title{
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--maroon-soft);
+    font-size: 1.05rem;
+    letter-spacing: .06em;
+    margin-bottom: 8px;
+  }
+
+  .countdown{
+    display:flex;
+    justify-content:center;
+    gap: 18px;
+    margin: 26px 0 44px;
+    flex-wrap: wrap;
+  }
+  .cd-box{
+    background: var(--cream-deep);
+    border: 1px solid var(--gold-light);
+    border-radius: 10px;
+    padding: 14px 18px;
+    min-width: 74px;
+  }
+  .cd-num{
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: var(--maroon);
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .cd-label{
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 2px;
+  }
+
+  .info-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 10px;
+  }
+  @media (max-width: 640px){
+    .info-grid{ grid-template-columns: 1fr; }
+  }
+
+  .info-card{
+    background: rgba(255,252,246,0.7);
+    border: 1px solid var(--gold-light);
+    border-radius: 14px;
+    padding: 30px 18px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap: 10px;
+    transition: transform .3s ease, box-shadow .3s ease;
+  }
+  .info-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 26px rgba(110,31,38,0.1);
+  }
+  .info-card svg{ width: 34px; height: 34px; stroke: var(--maroon); }
+  .info-card h3{
+    font-size: 1.1rem;
+    color: var(--maroon);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .info-card p{
+    font-size: 1.05rem;
+    line-height: 1.5;
+  }
+
+  .directions-btn{
+    display:inline-block;
+    margin-top: 8px;
+    padding: 8px 20px;
+    border: 1px solid var(--maroon);
+    color: var(--maroon);
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: .85rem;
+    letter-spacing: .04em;
+    transition: background .25s ease, color .25s ease;
+  }
+  .directions-btn:hover{
+    background: var(--maroon);
+    color: var(--cream);
+  }
+
+  /* ===== BLESSING / FOOTER ===== */
+  .blessing{
+    text-align: center;
+    padding: 60px 24px 90px;
+    position: relative;
+    z-index: 1;
+  }
+  .blessing-mark{
+    font-size: 2.4rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+    font-family: 'Aref Ruqaa', serif;
+  }
+  .blessing p{
+    font-size: 1.05rem;
+    color: var(--ink);
+    opacity: .85;
+  }
+  .blessing .names{
+    margin-top: 10px;
+    font-size: 1.35rem;
+    color: var(--maroon);
+    font-weight: 600;
+    letter-spacing: .03em;
+  }
+
+  .footer-line{
+    margin-top: 40px;
+    font-size: .75rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: .7;
+  }
+
+  /* scroll reveal */
+  .reveal{
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .reveal.show{
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .lantern{ animation: none; }
+    .reveal{ transition: none; opacity: 1; transform: none; }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline: 2px solid var(--maroon);
+    outline-offset: 3px;
+  }
 </style>
 </head>
-<body class="locked">
-
-<!-- LUXURY OPENING -->
-<div class="opening" id="opening">
-  <div class="cover">
-    <div class="mini">A Wedding Invitation</div>
-    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-    <h1 class="script">Nadeera</h1>
-    <div class="amp">&amp;</div>
-    <h1 class="script">Faais</h1>
-    <div class="date">20 · SEPTEMBER · 2026</div>
-    <div class="seal-wrap">
-      <button class="seal" id="seal" type="button" aria-label="Open invitation"><span>OPEN</span></button>
-      <div class="tap">Tap to reveal</div>
-    </div>
-  </div>
-</div>
+<body>
 
 <section class="hero">
-  <div class="flower-line flower-left">❀</div>
-  <div class="flower-line flower-right">❀</div>
-  <div class="container hero-inner reveal">
-    <div class="tiny">With the blessings of Allah</div>
-    <div class="ornament">— ✦ —</div>
-    <div class="hero-names script">Nadeera <span class="and">&amp;</span> Muhammed Faais</div>
-    <div class="hero-date">SUNDAY · 20 SEPTEMBER 2026 · 12:00 PM</div>
-    <div class="scrollhint">Scroll to discover<i></i></div>
-  </div>
-</section>
+  <svg class="corner-flora tr" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="var(--sage)" stroke-width="2">
+      <path d="M190 10 C 160 30, 140 60, 120 100" />
+      <path d="M175 25 C 150 45, 130 65, 115 95" />
+    </g>
+    <g fill="var(--blush)" opacity="0.9">
+      <circle cx="185" cy="15" r="14"/>
+      <circle cx="160" cy="45" r="18"/>
+      <circle cx="130" cy="85" r="15"/>
+    </g>
+    <g fill="var(--gold-light)" opacity="0.85">
+      <circle cx="170" cy="20" r="7"/>
+      <circle cx="145" cy="60" r="8"/>
+    </g>
+  </svg>
 
-<section class="invite">
-  <div class="container reveal">
-    <div class="invite-card">
-      <div class="eyebrow">Bismillahir Rahmanir Raheem</div>
-      <div class="ornament">— ✦ —</div>
-      <p class="parents">Mr Muhammed Basheer V. I. &amp; Mrs Bushara Basheer</p>
-      <p class="address">Vadakketholakkara House, North Edathala P.O., Aluva<br>
-      <span>Mob: 9447605517</span></p>
+  <svg class="corner-flora bl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="var(--sage)" stroke-width="2">
+      <path d="M190 10 C 160 30, 140 60, 120 100" />
+      <path d="M175 25 C 150 45, 130 65, 115 95" />
+    </g>
+    <g fill="var(--blush)" opacity="0.9">
+      <circle cx="185" cy="15" r="14"/>
+      <circle cx="160" cy="45" r="18"/>
+      <circle cx="130" cy="85" r="15"/>
+    </g>
+    <g fill="var(--gold-light)" opacity="0.85">
+      <circle cx="170" cy="20" r="7"/>
+      <circle cx="145" cy="60" r="8"/>
+    </g>
+  </svg>
 
-      <div class="ornament">❧</div>
-      <p>We joyfully invite you to the wedding of our daughter</p>
-      <div class="caption script">Nadeera Basheer</div>
-      <p class="family-detail">
+  <svg class="lantern left" viewBox="0 0 60 130" xmlns="http://www.w3.org/2000/svg">
+    <line x1="30" y1="0" x2="30" y2="18" stroke="var(--gold)" stroke-width="1.5"/>
+    <circle cx="30" cy="20" r="4" fill="var(--gold)"/>
+    <path d="M14 24 L46 24 L40 44 L20 44 Z" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+    <rect x="16" y="44" width="28" height="46" rx="3" fill="#FFF9EC" stroke="var(--gold)" stroke-width="1.5"/>
+    <line x1="30" y1="44" x2="30" y2="90" stroke="var(--gold-light)" stroke-width="1"/>
+    <path d="M16 90 L44 90 L36 112 L24 112 Z" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+    <circle cx="30" cy="118" r="3" fill="var(--gold)"/>
+  </svg>
+
+  <svg class="lantern right" viewBox="0 0 60 130" xmlns="http://www.w3.org/2000/svg">
+    <line x1="30" y1="0" x2="30" y2="18" stroke="var(--gold)" stroke-width="1.5"/>
+    <circle cx="30" cy="20" r="4" fill="var(--gold)"/>
+    <path d="M14 24 L46 24 L40 44 L20 44 Z" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+    <rect x="16" y="44" width="28" height="46" rx="3" fill="#FFF9EC" stroke="var(--gold)" stroke-width="1.5"/>
+    <line x1="30" y1="44" x2="30" y2="90" stroke="var(--gold-light)" stroke-width="1"/>
+    <path d="M16 90 L44 90 L36 112 L24 112 Z" fill="none" stroke="var(--gold)" stroke-width="1.5"/>
+    <circle cx="30" cy="118" r="3" fill="var(--gold)"/>
+  </svg>
+
+  <div class="arch reveal">
+    <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيمِ</div>
+
+    <div class="eyebrow">With hearts full of joy</div>
+    <div class="hosts">
+      Mr. Muhammed Basheer V. I. &amp;<br>Mrs. Bushara Basheer
+    </div>
+    <div class="host-address">
+      Vadakketholakkara House, North Edathala P.O, Aluva<br>
+      Mob: 9447605517
+    </div>
+
+    <div class="diamond-divider"><span class="line"></span><span class="mark"></span><span class="line"></span></div>
+
+    <div class="invite-line">We joyfully invite you to the wedding of our daughter</div>
+
+    <div class="couple-names">
+      <div class="name">Nadeera Basheer</div>
+      <div class="name-sub">
         Grand D/o V. A. Ibrahimkutty &amp; Sainaba N. A.<br>
         Late T. M. Muhammed &amp; Late Fathima K. A.
-      </p>
+      </div>
 
-      <div class="couple-divider"><span>◆</span><b>&amp;</b><span>◆</span></div>
+      <div class="ampersand">&amp;</div>
 
-      <div class="caption script">Muhammed Faais</div>
-      <p class="family-detail">
+      <div class="name">Muhammed Faeis</div>
+      <div class="name-sub">
         S/o Mr. Firos &amp; Mrs. Rafeeda Firos<br>
-        Annu House, Muthuvattoor P.O., Chavakkad
-      </p>
+        Annu House, Muthuvattoor P.O, Chavakkad
+      </div>
     </div>
   </div>
 </section>
 
 <section class="details">
-  <div class="container reveal">
-    <div class="eyebrow">Save the date</div>
-    <h2 class="title serif">The Nikah</h2>
-    <p class="subtitle">We would be honoured by your presence and dua on this blessed occasion.</p>
-    <div class="event-grid">
-      <div class="event">
-        <div class="icon">▣</div>
-        <strong>Date</strong>
-        <b>20th September 2026</b>
-        <small>9 Rabi Al-Akhir 1448</small>
+  <div class="frame">
+    <div class="section-title reveal">Save the date</div>
+    <div class="gold-rule"></div>
+
+    <div class="countdown reveal" id="countdown">
+      <div class="cd-box"><div class="cd-num" id="cd-days">--</div><div class="cd-label">Days</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-hours">--</div><div class="cd-label">Hours</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Mins</div></div>
+      <div class="cd-box"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Secs</div></div>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+        <h3>Date</h3>
+        <p>20th September 2026<br>9 Rabi Al-Akhir 1448</p>
       </div>
-      <div class="event">
-        <div class="icon">⌖</div>
-        <strong>Venue</strong>
-        <b>Highness Auditorium</b>
-        <small>Edathala</small>
+
+      <div class="info-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <h3>Venue</h3>
+        <p>Highness Auditorium<br>Edathala</p>
+        <a class="directions-btn" href="https://www.google.com/maps/search/?api=1&query=Highness+Auditorium+Edathala" target="_blank" rel="noopener">Get directions</a>
       </div>
-      <div class="event">
-        <div class="icon">☾</div>
-        <strong>Nikah</strong>
-        <b>12:00 PM</b>
-        <small>Sunday</small>
+
+      <div class="info-card reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 21v-7a8 8 0 0 1 16 0v7"/><path d="M4 21h16M9 21v-4h6v4"/><path d="M12 3v2"/></svg>
+        <h3>Nikkah</h3>
+        <p>12:00 PM</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="count-wrap">
-  <div class="container reveal">
-    <div class="eyebrow">Counting the moments</div>
-    <h2 class="title serif">Until Our Big Day</h2>
-    <div class="countdown">
-      <div class="time"><b id="days">00</b><span>Days</span></div>
-      <div class="time"><b id="hours">00</b><span>Hours</span></div>
-      <div class="time"><b id="minutes">00</b><span>Minutes</span></div>
-      <div class="time"><b id="seconds">00</b><span>Seconds</span></div>
-    </div>
+<section class="blessing">
+  <div class="frame">
+    <div class="diamond-divider reveal"><span class="line"></span><span class="mark"></span><span class="line"></span></div>
+    <div class="blessing-mark reveal">☾</div>
+    <p class="reveal">With love &amp; dua</p>
+    <div class="names reveal">Muhammed Ismail &amp; Nazira Mariyam</div>
+    <div class="footer-line">Nadeera &amp; Faeis · 20 · 09 · 2026</div>
   </div>
 </section>
-
-<section class="moments">
-  <div class="container reveal">
-    <div class="eyebrow">A little glimpse</div>
-    <h2 class="title script" style="font-size:58px">Our Beautiful Invitation</h2>
-    <p class="subtitle">The original invitation, carrying the details of our special day.</p>
-    <div class="photo-frame"><img src="invitation.jpg" alt="Nadeera and Muhammed Faais wedding invitation"></div>
-  </div>
-</section>
-
-<section class="families">
-  <div class="container reveal">
-    <div class="eyebrow">With love from our families</div>
-    <h2 class="title serif">Our Families</h2>
-    <div class="family-grid">
-      <div class="family">
-        <h3>BRIDE'S FAMILY</h3>
-        <p><b>Mr Muhammed Basheer V. I.<br>&amp; Mrs Bushara Basheer</b></p>
-        <p>Vadakketholakkara House,<br>North Edathala P.O., Aluva</p>
-        <p>Mob: 9447605517</p>
-      </div>
-      <div class="family-sep">✦</div>
-      <div class="family">
-        <h3>GROOM'S FAMILY</h3>
-        <p><b>Mr. Firos &amp; Mrs. Rafeeda Firos</b></p>
-        <p>Annu House,<br>Muthuvattoor P.O., Chavakkad</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="venue">
-  <div class="container reveal">
-    <div class="eyebrow">Join us</div>
-    <h2 class="title serif">The Celebration</h2>
-    <div class="venue-box">
-      <div class="pin">⌖</div>
-      <h3>Highness Auditorium</h3>
-      <p>Edathala, Kerala</p>
-      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Highness+Auditorium+Edathala" target="_blank" rel="noopener">View Location</a>
-      <div class="ornament">— ❧ —</div>
-      <p><b>Contact:</b> 9447605517</p>
-      <p style="margin-top:10px"><b>With love &amp; dua</b><br>Muhammed Ismail &amp; Nazira Mariyam</p>
-    </div>
-  </div>
-</section>
-
-<section class="rsvp">
-  <div class="container reveal">
-    <div class="eyebrow">We would love to know</div>
-    <h2 class="title serif">Will You Join Us?</h2>
-    <p class="subtitle">Please leave a little note for the couple.</p>
-    <form class="form" id="rsvpForm">
-      <div class="field"><input required name="name" placeholder="Your name"></div>
-      <div class="field"><input name="guests" type="number" min="1" placeholder="Number of guests"></div>
-      <div class="field"><textarea name="message" rows="4" placeholder="A message for Nadeera &amp; Faais"></textarea></div>
-      <button class="submit" type="submit">Send Your Wishes</button>
-      <div class="thanks" id="thanks"></div>
-    </form>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="script">With love &amp; dua</div>
-  <p>MUHAMMED ISMAIL &amp; NAZIRA MARIYAM</p>
-  <small>Nadeera Basheer &amp; Muhammed Faais · 20 September 2026</small>
-</footer>
 
 <script>
-const opening=document.getElementById('opening');
-function openInvitation(){
-  opening.classList.add('hide');
-  document.body.classList.remove('locked');
-  setTimeout(()=>opening.style.display='none',1200);
-  window.scrollTo(0,0);
-}
-document.getElementById('seal').addEventListener('click',openInvitation);
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
 
-const target=new Date('2026-09-20T12:00:00+05:30').getTime();
-function countdown(){
-  let x=Math.max(0,target-Date.now());
-  const d=Math.floor(x/86400000),h=Math.floor(x/3600000)%24,m=Math.floor(x/60000)%60,s=Math.floor(x/1000)%60;
-  days.textContent=String(d).padStart(2,'0');
-  hours.textContent=String(h).padStart(2,'0');
-  minutes.textContent=String(m).padStart(2,'0');
-  seconds.textContent=String(s).padStart(2,'0');
-}
-countdown();setInterval(countdown,1000);
+  // countdown to 20 Sept 2026, 12:00 PM IST
+  const weddingDate = new Date('2026-09-20T12:00:00+05:30').getTime();
 
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+  function updateCountdown(){
+    const now = new Date().getTime();
+    const dist = weddingDate - now;
 
-document.getElementById('rsvpForm').addEventListener('submit',e=>{
- e.preventDefault();
- document.getElementById('thanks').textContent='Thank you for your lovely wishes ♡';
- e.target.reset();
-});
+    const daysEl = document.getElementById('cd-days');
+    const hoursEl = document.getElementById('cd-hours');
+    const minsEl = document.getElementById('cd-mins');
+    const secsEl = document.getElementById('cd-secs');
+
+    if(dist < 0){
+      daysEl.textContent = '0';
+      hoursEl.textContent = '0';
+      minsEl.textContent = '0';
+      secsEl.textContent = '0';
+      return;
+    }
+
+    const days = Math.floor(dist / (1000*60*60*24));
+    const hours = Math.floor((dist % (1000*60*60*24)) / (1000*60*60));
+    const mins = Math.floor((dist % (1000*60*60)) / (1000*60));
+    const secs = Math.floor((dist % (1000*60)) / 1000);
+
+    daysEl.textContent = days;
+    hoursEl.textContent = hours;
+    minsEl.textContent = mins;
+    secsEl.textContent = secs;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 </script>
+
 </body>
 </html>
