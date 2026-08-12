@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<title>Nadeera & Muhammed Faais | Wedding Invitation</title>
+<meta name="theme-color" content="#f8efef">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Allura&display=swap" rel="stylesheet">
+<style>
+:root{
+ --bg:#fbf4f3;--paper:#fffafa;--rose:#a76473;--rose2:#c9929e;
+ --wine:#783c4c;--deep:#542735;--gold:#c59a61;--ink:#46383b;--muted:#8b777b;
+ --line:rgba(120,60,76,.18);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;font-size:16px;line-height:1.55}
+body.locked{overflow:hidden}
+button,input,textarea{font:inherit}
+a{text-decoration:none;color:inherit}
+section{position:relative;overflow:hidden}
+.container{width:min(92%,760px);margin:auto}
+.script{font-family:"Allura",cursive}
+.serif{font-family:"Playfair Display",serif}
+
+/* opening */
+.opening{
+ position:fixed;inset:0;z-index:1000;background:
+ radial-gradient(circle at 50% 35%,rgba(255,255,255,.96),transparent 28%),
+ linear-gradient(145deg,#faf1f0,#f3e4e5 55%,#ead6dc);
+ display:grid;place-items:center;transition:opacity 1.1s ease,visibility 1.1s;
+}
+.opening.hide{opacity:0;visibility:hidden;pointer-events:none}
+.opening::before,.opening::after{content:"";position:absolute;border:1px solid rgba(165,100,115,.22);border-radius:50%;animation:pulse 6s ease-in-out infinite}
+.opening::before{width:78vw;height:78vw;max-width:650px;max-height:650px}
+.opening::after{width:94vw;height:94vw;max-width:780px;max-height:780px;animation-delay:-2s}
+@keyframes pulse{50%{transform:scale(1.04);opacity:.5}}
+.cover{position:relative;z-index:3;width:min(90%,470px);text-align:center;padding:48px 30px 56px}
+.cover .mini{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+.cover .bismillah{font-size:22px;color:var(--wine);margin-bottom:18px}
+.cover h1{margin:0;color:var(--wine);font-size:clamp(62px,18vw,100px);font-weight:400;line-height:.8}
+.cover .amp{font-family:"Playfair Display";font-size:34px;color:var(--gold);display:block;margin:13px 0}
+.cover .date{margin-top:25px;letter-spacing:.12em;font-size:13px;color:var(--muted)}
+.seal-wrap{margin:30px auto 0;display:flex;flex-direction:column;align-items:center;gap:9px}
+.seal{
+ width:92px;height:92px;border-radius:50%;border:1px solid #ead5b4;
+ background:radial-gradient(circle at 35% 30%,#c88e9b,#914b5c 68%,#743c4c);
+ color:#fff8f3;display:grid;place-items:center;cursor:pointer;
+ box-shadow:0 10px 28px rgba(100,48,65,.22),inset 0 0 0 6px rgba(255,255,255,.12);
+ transition:.35s;position:relative;
+}
+.seal::after{content:"";position:absolute;inset:9px;border:1px dashed rgba(255,255,255,.5);border-radius:50%}
+.seal span{position:relative;z-index:2;font-size:14px;letter-spacing:.05em}
+.seal:hover{transform:scale(1.06) rotate(-2deg)}
+.tap{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}
+
+/* global decorations */
+.flower-line{position:absolute;opacity:.18;color:var(--rose);font-size:110px;line-height:1;pointer-events:none}
+.flower-left{left:-38px;top:35px}.flower-right{right:-45px;bottom:10px;transform:rotate(180deg)}
+.ornament{color:var(--gold);text-align:center;font-size:25px;margin:20px 0}
+.eyebrow{text-align:center;color:var(--gold);font-size:11px;letter-spacing:.28em;text-transform:uppercase}
+.title{text-align:center;color:var(--wine);font-weight:500;font-size:clamp(30px,7vw,44px);line-height:1.05;margin:9px 0}
+.subtitle{text-align:center;color:var(--muted);line-height:1.55;max-width:570px;margin:0 auto}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .8s ease,transform .8s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* hero */
+.hero{min-height:100svh;padding:90px 0 70px;display:grid;place-items:center;background:
+ radial-gradient(circle at 50% 20%,rgba(255,255,255,.9),transparent 28%),var(--bg)}
+.hero-inner{text-align:center}
+.hero .tiny{color:var(--gold);letter-spacing:.25em;text-transform:uppercase;font-size:11px}
+.hero-names{font-size:clamp(70px,18vw,130px);line-height:.72;color:var(--wine);margin:28px 0 25px}
+.hero-names .and{display:block;font-family:"Playfair Display";font-size:30px;line-height:1.8;color:var(--gold)}
+.hero-date{font-family:"Playfair Display";font-size:15px;letter-spacing:.12em;color:var(--ink)}
+.scrollhint{margin-top:40px;color:var(--rose);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.scrollhint i{display:block;width:1px;height:45px;background:var(--rose2);margin:10px auto 0}
+
+/* invite */
+.invite{padding:88px 0;background:#fffafa}
+.invite-card{border:1px solid var(--line);padding:40px 25px;background:
+ linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.55)),var(--paper);
+ box-shadow:0 15px 45px rgba(98,53,64,.08)}
+.invite-card .script{font-size:54px;color:var(--wine);text-align:center}
+.invite-card p{text-align:center;line-height:1.65;margin:10px auto;max-width:570px}
+
+
+.invite-card .parents{
+  font-family:"Playfair Display",serif;
+  font-size:20px;color:var(--wine);margin:5px auto 3px;
+}
+.invite-card .address,.invite-card .family-detail{
+  font-size:15px;color:var(--muted);line-height:1.7;
+}
+.invite-card .address span{color:var(--ink)}
+.invite-card .caption{font-size:56px;line-height:1.05;margin:12px 0;color:var(--wine)}
+.couple-divider{
+  display:flex;align-items:center;justify-content:center;gap:18px;
+  color:var(--gold);margin:24px 0 8px;
+}
+.couple-divider:before,.couple-divider:after{
+  content:"";width:95px;height:1px;background:var(--line);
+}
+.couple-divider b{
+  font-family:"Playfair Display",serif;font-size:28px;font-weight:400;color:var(--gold);
+}
+.event-grid{align-items:stretch}
+.event{min-height:155px;display:flex;flex-direction:column;justify-content:center}
+.family{padding:10px 8px}
+.family h3{letter-spacing:.12em;font-size:12px}
+
+/* details */
+.details{padding:90px 0;background:linear-gradient(#f9efef,#fdf7f6)}
+.event-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:38px}
+.event{border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);padding:22px 10px;text-align:center}
+.event .icon{font-size:30px;color:var(--wine);height:38px}
+.event strong{display:block;font-family:"Playfair Display";font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--rose)}
+.event b{display:block;color:var(--wine);font-size:22px;font-weight:500;margin-top:7px}
+.event small{color:var(--muted);font-size:15px;line-height:1.35}
+
+/* countdown */
+.count-wrap{padding:80px 0;background:#fffafa;text-align:center}
+.countdown{display:grid;grid-template-columns:repeat(4,1fr);max-width:650px;margin:34px auto 0}
+.time{padding:12px 5px;border-right:1px solid var(--line)}
+.time:last-child{border:0}
+.time b{font-family:"Playfair Display";font-size:34px;font-weight:500;color:var(--wine);display:block}
+.time span{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+/* gallery / image */
+.moments{padding:90px 0}
+.photo-frame{margin:38px auto 0;width:min(94%,500px);padding:9px;background:#fff;box-shadow:0 20px 50px rgba(76,45,54,.14);transform:rotate(-1deg)}
+.photo-frame img{display:block;width:100%;height:auto}
+.caption{text-align:center;margin:28px auto 0;color:var(--wine);font-size:42px}
+
+/* family */
+.families{padding:90px 0;background:#f8eeee}
+.family-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:20px;align-items:center;text-align:center;margin-top:38px}
+.family h3{font-family:"Playfair Display";font-size:17px;letter-spacing:.06em;color:var(--gold);font-weight:500}
+.family p{line-height:1.55;margin:9px 0}
+.family-sep{color:var(--gold);font-size:28px}
+
+/* venue */
+.venue{padding:90px 0;background:#fffafa}
+.venue-box{margin-top:35px;border:1px solid var(--line);padding:30px;text-align:center}
+.venue-box .pin{font-size:38px;color:var(--wine)}
+.venue-box h3{font-family:"Playfair Display";font-size:25px;color:var(--wine);margin:10px 0 4px}
+.venue-box p{color:var(--muted);margin:0}
+.map-btn,.submit{
+ display:inline-block;margin-top:22px;padding:11px 24px;border:1px solid var(--gold);
+ border-radius:999px;color:var(--wine);background:#fff;letter-spacing:.06em;cursor:pointer
+}
+
+/* RSVP */
+.rsvp{padding:90px 0;background:linear-gradient(145deg,#7d4656,#5c2d3b);color:#fff4f2}
+.rsvp .eyebrow{color:#e5c98f}.rsvp .title{color:#fff4f2}.rsvp .subtitle{color:#f1dfe0}
+.form{margin:35px auto 0;max-width:560px}
+.field{margin-bottom:14px}
+.field input,.field textarea{
+ width:100%;padding:14px 15px;border:1px solid rgba(255,255,255,.25);
+ border-radius:2px;background:rgba(255,255,255,.09);color:white;outline:none
+}
+.field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.7)}
+.submit{background:#fff7f0;border-color:#e6c994;color:var(--wine);display:block;margin:20px auto 0}
+.thanks{margin-top:20px;text-align:center;min-height:25px;color:#f0d59e}
+
+/* footer */
+.footer{padding:80px 20px 60px;text-align:center;background:#4c2430;color:#fff3f0}
+.footer .script{font-size:54px;color:#e5c98f}
+.footer p{margin:12px 0;color:#f0dcdd}
+.footer small{letter-spacing:.16em;text-transform:uppercase;color:#d8bfc2;font-size:10px}
+
+/* mobile */
+@media(max-width:650px){
+ .event-grid{grid-template-columns:1fr}
+ .event{border-right:1px solid var(--line);border-left:1px solid var(--line)}
+ .countdown{grid-template-columns:repeat(2,1fr);gap:8px}
+ .time{border:1px solid var(--line);padding:16px}
+ .family-grid{grid-template-columns:1fr;gap:10px}
+ .family-sep{transform:rotate(90deg)}
+ .hero{padding-top:80px}
+ .invite-card{padding:35px 18px}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- LUXURY OPENING -->
+<div class="opening" id="opening">
+  <div class="cover">
+    <div class="mini">A Wedding Invitation</div>
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+    <h1 class="script">Nadeera</h1>
+    <div class="amp">&amp;</div>
+    <h1 class="script">Faais</h1>
+    <div class="date">20 · SEPTEMBER · 2026</div>
+    <div class="seal-wrap">
+      <button class="seal" id="seal" type="button" aria-label="Open invitation"><span>OPEN</span></button>
+      <div class="tap">Tap to reveal</div>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="flower-line flower-left">❀</div>
+  <div class="flower-line flower-right">❀</div>
+  <div class="container hero-inner reveal">
+    <div class="tiny">With the blessings of Allah</div>
+    <div class="ornament">— ✦ —</div>
+    <div class="hero-names script">Nadeera <span class="and">&amp;</span> Muhammed Faais</div>
+    <div class="hero-date">SUNDAY · 20 SEPTEMBER 2026 · 12:00 PM</div>
+    <div class="scrollhint">Scroll to discover<i></i></div>
+  </div>
+</section>
+
+<section class="invite">
+  <div class="container reveal">
+    <div class="invite-card">
+      <div class="eyebrow">Bismillahir Rahmanir Raheem</div>
+      <div class="ornament">— ✦ —</div>
+      <p class="parents">Mr Muhammed Basheer V. I. &amp; Mrs Bushara Basheer</p>
+      <p class="address">Vadakketholakkara House, North Edathala P.O., Aluva<br>
+      <span>Mob: 9447605517</span></p>
+
+      <div class="ornament">❧</div>
+      <p>We joyfully invite you to the wedding of our daughter</p>
+      <div class="caption script">Nadeera Basheer</div>
+      <p class="family-detail">
+        Grand D/o V. A. Ibrahimkutty &amp; Sainaba N. A.<br>
+        Late T. M. Muhammed &amp; Late Fathima K. A.
+      </p>
+
+      <div class="couple-divider"><span>◆</span><b>&amp;</b><span>◆</span></div>
+
+      <div class="caption script">Muhammed Faais</div>
+      <p class="family-detail">
+        S/o Mr. Firos &amp; Mrs. Rafeeda Firos<br>
+        Annu House, Muthuvattoor P.O., Chavakkad
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="details">
+  <div class="container reveal">
+    <div class="eyebrow">Save the date</div>
+    <h2 class="title serif">The Nikah</h2>
+    <p class="subtitle">We would be honoured by your presence and dua on this blessed occasion.</p>
+    <div class="event-grid">
+      <div class="event">
+        <div class="icon">▣</div>
+        <strong>Date</strong>
+        <b>20th September 2026</b>
+        <small>9 Rabi Al-Akhir 1448</small>
+      </div>
+      <div class="event">
+        <div class="icon">⌖</div>
+        <strong>Venue</strong>
+        <b>Highness Auditorium</b>
+        <small>Edathala</small>
+      </div>
+      <div class="event">
+        <div class="icon">☾</div>
+        <strong>Nikah</strong>
+        <b>12:00 PM</b>
+        <small>Sunday</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="count-wrap">
+  <div class="container reveal">
+    <div class="eyebrow">Counting the moments</div>
+    <h2 class="title serif">Until Our Big Day</h2>
+    <div class="countdown">
+      <div class="time"><b id="days">00</b><span>Days</span></div>
+      <div class="time"><b id="hours">00</b><span>Hours</span></div>
+      <div class="time"><b id="minutes">00</b><span>Minutes</span></div>
+      <div class="time"><b id="seconds">00</b><span>Seconds</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="moments">
+  <div class="container reveal">
+    <div class="eyebrow">A little glimpse</div>
+    <h2 class="title script" style="font-size:58px">Our Beautiful Invitation</h2>
+    <p class="subtitle">The original invitation, carrying the details of our special day.</p>
+    <div class="photo-frame"><img src="invitation.jpg" alt="Nadeera and Muhammed Faais wedding invitation"></div>
+  </div>
+</section>
+
+<section class="families">
+  <div class="container reveal">
+    <div class="eyebrow">With love from our families</div>
+    <h2 class="title serif">Our Families</h2>
+    <div class="family-grid">
+      <div class="family">
+        <h3>BRIDE'S FAMILY</h3>
+        <p><b>Mr Muhammed Basheer V. I.<br>&amp; Mrs Bushara Basheer</b></p>
+        <p>Vadakketholakkara House,<br>North Edathala P.O., Aluva</p>
+        <p>Mob: 9447605517</p>
+      </div>
+      <div class="family-sep">✦</div>
+      <div class="family">
+        <h3>GROOM'S FAMILY</h3>
+        <p><b>Mr. Firos &amp; Mrs. Rafeeda Firos</b></p>
+        <p>Annu House,<br>Muthuvattoor P.O., Chavakkad</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="venue">
+  <div class="container reveal">
+    <div class="eyebrow">Join us</div>
+    <h2 class="title serif">The Celebration</h2>
+    <div class="venue-box">
+      <div class="pin">⌖</div>
+      <h3>Highness Auditorium</h3>
+      <p>Edathala, Kerala</p>
+      <a class="map-btn" href="https://www.google.com/maps/search/?api=1&query=Highness+Auditorium+Edathala" target="_blank" rel="noopener">View Location</a>
+      <div class="ornament">— ❧ —</div>
+      <p><b>Contact:</b> 9447605517</p>
+      <p style="margin-top:10px"><b>With love &amp; dua</b><br>Muhammed Ismail &amp; Nazira Mariyam</p>
+    </div>
+  </div>
+</section>
+
+<section class="rsvp">
+  <div class="container reveal">
+    <div class="eyebrow">We would love to know</div>
+    <h2 class="title serif">Will You Join Us?</h2>
+    <p class="subtitle">Please leave a little note for the couple.</p>
+    <form class="form" id="rsvpForm">
+      <div class="field"><input required name="name" placeholder="Your name"></div>
+      <div class="field"><input name="guests" type="number" min="1" placeholder="Number of guests"></div>
+      <div class="field"><textarea name="message" rows="4" placeholder="A message for Nadeera &amp; Faais"></textarea></div>
+      <button class="submit" type="submit">Send Your Wishes</button>
+      <div class="thanks" id="thanks"></div>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="script">With love &amp; dua</div>
+  <p>MUHAMMED ISMAIL &amp; NAZIRA MARIYAM</p>
+  <small>Nadeera Basheer &amp; Muhammed Faais · 20 September 2026</small>
+</footer>
+
+<script>
+const opening=document.getElementById('opening');
+function openInvitation(){
+  opening.classList.add('hide');
+  document.body.classList.remove('locked');
+  setTimeout(()=>opening.style.display='none',1200);
+  window.scrollTo(0,0);
+}
+document.getElementById('seal').addEventListener('click',openInvitation);
+
+const target=new Date('2026-09-20T12:00:00+05:30').getTime();
+function countdown(){
+  let x=Math.max(0,target-Date.now());
+  const d=Math.floor(x/86400000),h=Math.floor(x/3600000)%24,m=Math.floor(x/60000)%60,s=Math.floor(x/1000)%60;
+  days.textContent=String(d).padStart(2,'0');
+  hours.textContent=String(h).padStart(2,'0');
+  minutes.textContent=String(m).padStart(2,'0');
+  seconds.textContent=String(s).padStart(2,'0');
+}
+countdown();setInterval(countdown,1000);
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+
+document.getElementById('rsvpForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ document.getElementById('thanks').textContent='Thank you for your lovely wishes ♡';
+ e.target.reset();
+});
+</script>
+</body>
+</html>
