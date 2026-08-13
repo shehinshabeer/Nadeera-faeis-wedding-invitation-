@@ -315,14 +315,25 @@
   /* invitation download */
   .invite-download{ margin-top: 16px; }
 
-  /* mobile: switch to two-column layout so boxes align neatly */
+  /* mobile: make countdown a single horizontal row (scrollable) */
   @media (max-width: 520px){
-    .countdown{ grid-template-columns: repeat(2, 1fr); max-width: 360px; }
+    .countdown{
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      margin-top: 12px;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 6px;
+      justify-content: flex-start;
+    }
+    .cd-box{ flex: 0 0 auto; min-width: 84px; }
   }
 
   @media (max-width: 420px){
-    .countdown{ gap: 8px; max-width: 320px; }
-    .cd-box{ padding: 8px 10px; border-radius: 8px; }
+    .countdown{ gap: 8px; }
+    .cd-box{ padding: 8px 10px; border-radius: 8px; min-width: 74px; }
     .cd-num{ font-size: 1.4rem; }
     .cd-label{ font-size: .60rem; margin-top: 4px; }
   }
