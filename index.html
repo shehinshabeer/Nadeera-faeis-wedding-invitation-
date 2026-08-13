@@ -55,7 +55,7 @@
   .gold-rule.show{ transform: scaleX(1); }
 
   .diamond-divider{ display:flex; align-items:center; justify-content:center; gap:14px; margin: 18px 0; color: var(--gold); }
-  .diamond-divider .line{ width:60px; height:1px; background: var(--gold-light);}
+  .diamond-divider .line{ width:60px; height:1px; background: var(--gold-light);} 
   .diamond-divider .mark{ width:8px;height:8px; background: var(--gold); transform: rotate(45deg); }
 
   /* ===================== LANTERN (shared, swaying) ===================== */
@@ -281,31 +281,24 @@
   }
   .directions-btn:hover{ background: var(--maroon); color: var(--cream); }
 
-  /* ---- countdown (REPLACED: responsive grid to align on mobile) ---- */
-  .countdown{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-    gap: 12px;
-    max-width: 420px;
-    margin: 18px auto 44px;
-    align-items: center;
-  }
-  .cd-box{
-    background: var(--cream-deep);
-    border: 1px solid var(--gold-light);
-    border-radius: 10px;
-    padding: 10px 12px;
-    min-width: 0; /* allow grid children to shrink */
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-  }
-  .cd-num{ font-size: 1.7rem; font-weight: 600; color: var(--maroon); line-height: 1; }
+  /* ---- countdown ---- */
+  .countdown-section{ text-align:center; padding: 30px 24px 10px; position: relative; z-index: 1; }
+  /* center grid items and provide better mobile layout */
+  .countdown{ display:grid; grid-template-columns: repeat(4, minmax(68px, 1fr)); gap: 12px; margin-top: 18px; max-width: 420px; margin-left:auto; margin-right:auto; justify-items:center; align-items:center; }
+  .cd-box{ background: var(--cream-deep); border: 1px solid var(--gold-light); border-radius: 10px; padding: 12px 14px; min-width: 0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .cd-num{ font-size: 1.7rem; font-weight: 600; color: var(--maroon); line-height:1; }
   .cd-label{ font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: 6px; }
 
+  /* invitation download */
+  .invite-download{ margin-top: 16px; }
+
+  /* mobile: switch to two-column layout so boxes align neatly */
+  @media (max-width: 520px){
+    .countdown{ grid-template-columns: repeat(2, 1fr); max-width: 360px; }
+  }
+
   @media (max-width: 420px){
-    .countdown{ gap: 8px; max-width: 320px; margin-bottom: 28px; }
+    .countdown{ gap: 8px; max-width: 320px; }
     .cd-box{ padding: 8px 10px; border-radius: 8px; }
     .cd-num{ font-size: 1.4rem; }
     .cd-label{ font-size: .60rem; margin-top: 4px; }
@@ -480,6 +473,11 @@
         <div class="cd-box"><div class="cd-num" id="cd-mins">--</div><div class="cd-label">Mins</div></div>
         <div class="cd-box"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Secs</div></div>
       </div>
+
+      <!-- Invitation download (assets/invitation.pdf) -->
+      <div class="invite-download reveal">
+        <a class="directions-btn" href="assets/invitation.pdf" download aria-label="Download invitation letter">Download invitation letter</a>
+      </div>
     </div>
   </section>
 
@@ -518,6 +516,31 @@
   const body = document.body;
   let opened = false;
 
+  // background audio from assets/music.mp3
+  const bgAudio = new Audio('assets/music.mp3');
+  bgAudio.loop = true;
+  bgAudio.volume = 0.75;
+  let musicOn = false; // reflects current playing state
+
+  function playAudio(){
+    if(!bgAudio) return;
+    bgAudio.play().then(() => {
+      musicOn = true;
+      updateToggleUI();
+    }).catch(() => {
+      // autoplay may be blocked by browser; UI toggle will still work
+      musicOn = false;
+      updateToggleUI();
+    });
+  }
+  function stopAudio(){
+    if(!bgAudio) return;
+    bgAudio.pause();
+    try{ bgAudio.currentTime = 0; }catch(e){}
+    musicOn = false;
+    updateToggleUI();
+  }
+
   function openInvite(){
     if(opened) return;
     opened = true;
@@ -525,7 +548,8 @@
     body.classList.remove('locked');
     setTimeout(() => { cover.style.display = 'none'; }, 950);
     revealAll();
-    startMusic();
+    // Start the background audio when entering (opening the invitation)
+    playAudio();
   }
 
   cardBtn.addEventListener('click', openInvite);
@@ -544,51 +568,7 @@
     document.querySelectorAll('.reveal, .gold-rule').forEach(el => io.observe(el));
   }
 
-  // ---- ambient music (synthesized softly, no external audio file) ----
-  let musicOn = false;
-  let melodyPart;
-  let toneReady = false;
-
-  function setupMusic(){
-    if(toneReady) return;
-    toneReady = true;
-
-    const reverb = new Tone.Reverb({ decay: 5, wet: 0.4 }).toDestination();
-    const synth = new Tone.PluckSynth({
-      attackNoise: 0.6,
-      dampening: 3500,
-      resonance: 0.85,
-      volume: -12
-    }).connect(reverb);
-
-    const notes = ['D4','F4','A4','D5','C5','A4','G4','F4','A4','C5','D5','A4'];
-    let i = 0;
-
-    melodyPart = new Tone.Loop((time) => {
-      synth.triggerAttack(notes[i % notes.length], time);
-      i++;
-    }, '1.2n');
-
-    Tone.Transport.bpm.value = 58;
-  }
-
-  function playMusic(){
-    setupMusic();
-    Tone.start().then(() => {
-      Tone.Transport.start();
-      melodyPart.start(0);
-      musicOn = true;
-      updateToggleUI();
-    });
-  }
-
-  function stopMusic(){
-    Tone.Transport.stop();
-    if(melodyPart) melodyPart.stop();
-    musicOn = false;
-    updateToggleUI();
-  }
-
+  // music toggle button
   function updateToggleUI(){
     const btn = document.getElementById('musicToggle');
     const label = document.getElementById('musicLabel');
@@ -597,10 +577,15 @@
     btn.setAttribute('aria-pressed', musicOn ? 'true' : 'false');
   }
 
-  function startMusic(){ playMusic(); }
-
   document.getElementById('musicToggle').addEventListener('click', () => {
-    if(musicOn){ stopMusic(); } else { playMusic(); }
+    if(musicOn){ stopAudio(); } else { playAudio(); }
+  });
+
+  // stop audio when user leaves or the page is hidden ("stop while leaving")
+  window.addEventListener('pagehide', () => { stopAudio(); });
+  window.addEventListener('beforeunload', () => { stopAudio(); });
+  document.addEventListener('visibilitychange', () => {
+    if(document.hidden){ stopAudio(); }
   });
 
   // ---- countdown to 20 Sept 2026, 12:00 PM IST ----
