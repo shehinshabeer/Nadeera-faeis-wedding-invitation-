@@ -284,8 +284,8 @@
   /* ---- countdown ---- */
   .countdown-section{ text-align:center; padding: 30px 24px 10px; position: relative; z-index: 1; }
   /* center grid items and provide better mobile layout */
-  .countdown{ display:grid; grid-template-columns: repeat(4, minmax(68px, 1fr)); gap: 12px; margin-top: 18px; max-width: 420px; margin-left:auto; margin-right:auto; justify-items:center; align-items:center; }
-  .cd-box{ background: var(--cream-deep); border: 1px solid var(--gold-light); border-radius: 10px; padding: 12px 14px; min-width: 0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .countdown{ display:grid; grid-template-columns: repeat(4, minmax(68px, 1fr)); gap: 12px; margin-top: 18px; max-width: 420px; margin-left:auto; margin-right:auto; justify-items:center; align-it[...]
+  .cd-box{ background: var(--cream-deep); border: 1px solid var(--gold-light); border-radius: 10px; padding: 12px 14px; min-width: 0; display:flex; flex-direction:column; align-items:center; just[...]
   .cd-num{ font-size: 1.7rem; font-weight: 600; color: var(--maroon); line-height:1; }
   .cd-label{ font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: 6px; }
 
@@ -474,9 +474,9 @@
         <div class="cd-box"><div class="cd-num" id="cd-secs">--</div><div class="cd-label">Secs</div></div>
       </div>
 
-      <!-- Invitation download (assets/invitation.pdf) -->
+      <!-- Invitation download (assets/invitation-card.jpg) -->
       <div class="invite-download reveal">
-        <a class="directions-btn" href="assets/invitation-card.jpg" download aria-label="Download invitation letter">Download invitation letter</a>
+        <a id="downloadInvite" class="directions-btn" href="assets/invitation-card.jpg" download="invitation-card.jpg" aria-label="Download invitation letter">Download invitation letter</a>
       </div>
     </div>
   </section>
@@ -617,6 +617,41 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  // ---- Download invitation and show alert on completion ----
+  (function(){
+    const downloadLink = document.getElementById('downloadInvite');
+    if(!downloadLink) return;
+
+    downloadLink.addEventListener('click', function(e){
+      e.preventDefault();
+      const url = downloadLink.href;
+
+      // Attempt to fetch the file and trigger a programmatic download so we can show confirmation after it starts
+      fetch(url).then(response => {
+        if(!response.ok) throw new Error('Network response was not ok');
+        return response.blob();
+      }).then(blob => {
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = downloadLink.getAttribute('download') || 'invitation';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        // revoke after a short delay
+        setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+
+        // Show confirmation to the user after download starts
+        alert('Invitation downloaded. Thank you — we look forward to seeing you!');
+      }).catch(err => {
+        // If fetch fails (CORS or network), fall back to opening in a new tab and show a helpful alert
+        window.open(url, '_blank');
+        alert('Download started in a new tab. If it did not start, please try again.');
+      });
+    });
+  })();
+
 </script>
 
 </body>
